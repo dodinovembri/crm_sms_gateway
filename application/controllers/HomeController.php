@@ -20,15 +20,6 @@ class HomeController extends CI_Controller {
         $this->load->view('templates/footer');
 	}
 
-    public function knowledge($id)
-    {
-        $data['knowledges'] = $this->KnowledgeCategoryModel->getByWhere($id)->result();
-        
-        $this->load->view('templates/header');
-        $this->load->view('home/knowledge', $data);
-        $this->load->view('templates/footer');        
-    }
-
     public function logout()
     {
         $this->session->sess_destroy();

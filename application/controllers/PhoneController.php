@@ -1,12 +1,12 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class UserController extends CI_Controller {
+class PhoneController extends CI_Controller {
 
     function __construct()
     {
         parent::__construct();
-        $this->load->model('UserModel');
+        $this->load->model('PhoneModel');
 
         if ($this->session->userdata('logged_in') != 1) {
             return redirect(base_url('login'));
@@ -15,19 +15,18 @@ class UserController extends CI_Controller {
 
 	public function index()
 	{
-        $data['users'] = $this->UserModel->get()->result();
+        $data['phones'] = $this->PhoneModel->get()->result();
 
         $this->load->view('templates/header');
         $this->load->view('templates/sidebar');
-		$this->load->view('user/index', $data);
+        $this->load->view('phone/index', $data);
         $this->load->view('templates/footer');
 	}
 
     public function create()
     {
         $this->load->view('templates/header');
-        $this->load->view('templates/sidebar');
-		$this->load->view('user/create');
+        $this->load->view('user/create');
         $this->load->view('templates/footer');
     }
 

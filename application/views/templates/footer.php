@@ -1,6 +1,6 @@
   <!-- /.content-wrapper -->
   <footer class="main-footer">
-    <strong><a href="https://teknik.univpgri-palembang.ac.id/">FAKULTAS TEKNIK UNIVERSITAS PGRI PALEMBANG</a>
+    <strong><a href="https://teknik.univpgri-palembang.ac.id/">Fakultas Teknik Universitas PGRI Paelmbang</a>
       <br>Copyright &copy; 2021.</strong>
     All rights reserved.
     <div class="float-right d-none d-sm-inline-block">
@@ -262,7 +262,8 @@
         "responsive": true,
         "lengthChange": false,
         "autoWidth": false,
-        "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+        "lengthMenu": [10, 25, 50, "All"],
+        // "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
       }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
       $('#example2').DataTable({
         "paging": true,

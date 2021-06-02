@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class UserController extends CI_Controller {
+class SentboxController extends CI_Controller {
 
     function __construct()
     {
@@ -19,15 +19,14 @@ class UserController extends CI_Controller {
 
         $this->load->view('templates/header');
         $this->load->view('templates/sidebar');
-		$this->load->view('user/index', $data);
+        $this->load->view('sentbox/index');
         $this->load->view('templates/footer');
 	}
 
     public function create()
     {
         $this->load->view('templates/header');
-        $this->load->view('templates/sidebar');
-		$this->load->view('user/create');
+        $this->load->view('user/create');
         $this->load->view('templates/footer');
     }
 

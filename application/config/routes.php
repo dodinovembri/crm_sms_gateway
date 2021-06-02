@@ -67,3 +67,93 @@ $route['user/edit/(:any)'] = 'UserController/edit/$1';
 $route['user/show/(:any)'] = 'UserController/show/$1';
 $route['user/update/(:any)'] = 'UserController/update/$1';
 $route['user/destroy/(:any)'] = 'UserController/destroy/$1';
+
+// routes for profile
+$route['profile'] = 'ProfileController';
+$route['profile/create'] = 'ProfileController/create';
+$route['profile/store'] = 'ProfileController/store';
+$route['profile/edit/(:any)'] = 'ProfileController/edit/$1';
+$route['profile/show/(:any)'] = 'ProfileController/show/$1';
+$route['profile/update/(:any)'] = 'ProfileController/update/$1';
+$route['profile/destroy/(:any)'] = 'ProfileController/destroy/$1';
+
+// routes for phone
+$route['phone'] = 'PhoneController';
+$route['phone/create'] = 'PhoneController/create';
+$route['phone/store'] = 'PhoneController/store';
+$route['phone/edit/(:any)'] = 'PhoneController/edit/$1';
+$route['phone/show/(:any)'] = 'PhoneController/show/$1';
+$route['phone/update/(:any)'] = 'PhoneController/update/$1';
+$route['phone/destroy/(:any)'] = 'PhoneController/destroy/$1';
+
+// routes for single message
+$route['single_message'] = 'SingleMessageController';
+$route['single_message/create'] = 'SingleMessageController/create';
+$route['single_message/store'] = 'SingleMessageController/store';
+$route['single_message/edit/(:any)'] = 'SingleMessageController/edit/$1';
+$route['single_message/show/(:any)'] = 'SingleMessageController/show/$1';
+$route['single_message/update/(:any)'] = 'SingleMessageController/update/$1';
+$route['single_message/destroy/(:any)'] = 'SingleMessageController/destroy/$1';
+
+// routes for single message
+$route['broadcast_message'] = 'BroadcastMessageController';
+$route['broadcast_message/create'] = 'BroadcastMessageController/create';
+$route['broadcast_message/store'] = 'BroadcastMessageController/store';
+$route['broadcast_message/edit/(:any)'] = 'BroadcastMessageController/edit/$1';
+$route['broadcast_message/show/(:any)'] = 'BroadcastMessageController/show/$1';
+$route['broadcast_message/update/(:any)'] = 'BroadcastMessageController/update/$1';
+$route['broadcast_message/destroy/(:any)'] = 'BroadcastMessageController/destroy/$1';
+
+// routes for inbox
+$route['inbox'] = 'InboxController';
+$route['inbox/create'] = 'InboxController/create';
+$route['inbox/store'] = 'InboxController/store';
+$route['inbox/edit/(:any)'] = 'InboxController/edit/$1';
+$route['inbox/show/(:any)'] = 'InboxController/show/$1';
+$route['inbox/update/(:any)'] = 'InboxController/update/$1';
+$route['inbox/destroy/(:any)'] = 'InboxController/destroy/$1';
+
+// routes for single sentbox
+$route['sentbox'] = 'SentboxController';
+$route['sentbox/create'] = 'SentboxController/create';
+$route['sentbox/store'] = 'SentboxController/store';
+$route['sentbox/edit/(:any)'] = 'SentboxController/edit/$1';
+$route['sentbox/show/(:any)'] = 'SentboxController/show/$1';
+$route['sentbox/update/(:any)'] = 'SentboxController/update/$1';
+$route['sentbox/destroy/(:any)'] = 'SentboxController/destroy/$1';
+
+// routes for outbox
+$route['outbox'] = 'OutboxController';
+$route['outbox/create'] = 'OutboxController/create';
+$route['outbox/store'] = 'OutboxController/store';
+$route['outbox/edit/(:any)'] = 'OutboxController/edit/$1';
+$route['outbox/show/(:any)'] = 'OutboxController/show/$1';
+$route['outbox/update/(:any)'] = 'OutboxController/update/$1';
+$route['outbox/destroy/(:any)'] = 'OutboxController/destroy/$1';
+
+// routes for contact
+$route['contact'] = 'ContactController';
+$route['contact/create'] = 'ContactController/create';
+$route['contact/store'] = 'ContactController/store';
+$route['contact/edit/(:any)'] = 'ContactController/edit/$1';
+$route['contact/show/(:any)'] = 'ContactController/show/$1';
+$route['contact/update/(:any)'] = 'ContactController/update/$1';
+$route['contact/destroy/(:any)'] = 'ContactController/destroy/$1';
+
+// routes for contact group
+$route['contact_group'] = 'ContactGroupController';
+$route['contact_group/create'] = 'ContactGroupController/create';
+$route['contact_group/store'] = 'ContactGroupController/store';
+$route['contact_group/edit/(:any)'] = 'ContactGroupController/edit/$1';
+$route['contact_group/show/(:any)'] = 'ContactGroupController/show/$1';
+$route['contact_group/update/(:any)'] = 'ContactGroupController/update/$1';
+$route['contact_group/destroy/(:any)'] = 'ContactGroupController/destroy/$1';
+
+// routes for autoreply
+$route['autoreply'] = 'AutoReplyController';
+$route['autoreply/create'] = 'AutoReplyController/create';
+$route['autoreply/store'] = 'AutoReplyController/store';
+$route['autoreply/edit/(:any)'] = 'AutoReplyController/edit/$1';
+$route['autoreply/show/(:any)'] = 'AutoReplyController/show/$1';
+$route['autoreply/update/(:any)'] = 'AutoReplyController/update/$1';
+$route['autoreply/destroy/(:any)'] = 'AutoReplyController/destroy/$1';

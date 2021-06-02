@@ -4,12 +4,12 @@
 		<div class="container-fluid">
 			<div class="row mb-2">
 				<div class="col-sm-6">
-					<h1>Users List</h1>
+					<h1>Inbox List</h1>
 				</div>
 				<div class="col-sm-6">
 					<ol class="breadcrumb float-sm-right">
 						<li class="breadcrumb-item"><a href="#">Home</a></li>
-						<li class="breadcrumb-item active">Users</li>
+						<li class="breadcrumb-item active">Inbox</li>
 					</ol>
 				</div>
 			</div>
@@ -27,19 +27,19 @@
 					<thead>
 						<tr>
 							<th>No</th>
-							<th>Name</th>
-							<th>Phone Number</th>
-							<th>Role</th>
+							<th>Sender Number</th>
+							<th>Receiving Date Time</th>
+							<th>Text</th>
 							<th>Actions</th>
 						</tr>
 					</thead>
 					<tbody>
-						<?php $no = 0; foreach ($users as $key => $value) { $no++; ?>
+						<?php $no = 0; foreach ($inbox as $key => $value) { $no++; ?>
 							<tr>
 								<td><?php echo $no ?></td>
-								<td><?php echo $value->name ?></td>
-								<td><?php echo $value->phone_number ?></td>
-								<td><?php echo $value->role_id ?></td>
+								<td><?php echo $value->SenderNumber ?></td>
+								<td><?php echo $value->ReceivingDateTime ?></td>
+								<td><?php echo $value->Text ?></td>
 								<td>
 									<a href=""><i class="fas fa-eye"></i></a> &nbsp;
 									<a href=""><i class="fas fa-pen-square"></i></a> &nbsp;

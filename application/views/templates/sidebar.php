@@ -2,7 +2,7 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
 	<!-- Brand Logo -->
 	<a href="<?php echo base_url('home') ?>" class="brand-link">
-		<img src="<?php echo base_url() ?>assets/dist/img/sms.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+		<img src="<?php echo base_url() ?>assets/dist/img/logo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
 		<span class="brand-text font-weight-light">SMS GATEWAY</span>
 	</a>
 	<?php
@@ -23,18 +23,6 @@
 			</div>
 		</div>
 
-		<!-- SidebarSearch Form -->
-		<div class="form-inline">
-			<div class="input-group" data-widget="sidebar-search">
-				<input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
-				<div class="input-group-append">
-					<button class="btn btn-sidebar">
-						<i class="fas fa-search fa-fw"></i>
-					</button>
-				</div>
-			</div>
-		</div>
-
 		<!-- Sidebar Menu -->
 		<nav class="mt-2">
 			<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
@@ -48,36 +36,31 @@
 						</p>
 					</a>
 				</li>
-				<li class="nav-item">
+				<li class="nav-header">Transactions</li>
+				<li class="nav-item <?php if ($this->uri->segment(1) == "single_message/*" || $this->uri->segment(1) == "broadcast_message/*") { echo "menu-is-opening menu-open"; } ?> ">
 					<a href="#" class="nav-link">
 						<i class="nav-icon far fa-comments"></i>
 						<p>
-							Sent SMS
+							Send Message
 							<i class="fas fa-angle-left right"></i>
 						</p>
 					</a>
 					<ul class="nav nav-treeview">
 						<li class="nav-item">
-							<a href="<?php echo base_url('sent_sms/single_message') ?>" class="nav-link">
+							<a href="<?php echo base_url('single_message/create') ?>" class="nav-link <?php if ($this->uri->segment(1) == "single_message/create") { echo "active"; } ?>">
 								<i class="far fa-circle nav-icon"></i>
 								<p>Single Message</p>
 							</a>
 						</li>
 						<li class="nav-item">
-							<a href="<?php echo base_url('sent_sms/broadcast_message') ?>" class="nav-link">
+							<a href="<?php echo base_url('broadcast_message/create') ?>" class="nav-link <?php if ($this->uri->segment(1) == "broadcast_message/create") { echo "active"; } ?>">
 								<i class="far fa-circle nav-icon"></i>
 								<p>Broadcast Message</p>
 							</a>
 						</li>
-						<li class="nav-item">
-							<a href="<?php echo base_url('sent_sms/autoreply') ?>" class="nav-link">
-								<i class="far fa-circle nav-icon"></i>
-								<p>Autoreply</p>
-							</a>
-						</li>
 					</ul>
 				</li>
-				<li class="nav-item">
+				<li class="nav-item <?php if ($this->uri->segment(1) == "inbox" || $this->uri->segment(1) == "sentbox" || $this->uri->segment(1) == "outbox") { echo "menu-is-opening menu-open"; } ?>">
 					<a href="#" class="nav-link">
 						<i class="nav-icon far fa-envelope"></i>
 						<p>
@@ -87,26 +70,26 @@
 					</a>
 					<ul class="nav nav-treeview">
 						<li class="nav-item">
-							<a href="<?php echo base_url('mail_box/inbox') ?>" class="nav-link">
+							<a href="<?php echo base_url('inbox') ?>" class="nav-link <?php if ($this->uri->segment(1) == "inbox") { echo "active"; } ?>">
 								<i class="far fa-circle nav-icon"></i>
 								<p>Inbox</p>
 							</a>
 						</li>
 						<li class="nav-item">
-							<a href="<?php echo base_url('mail_box/outbox') ?>" class="nav-link">
+							<a href="<?php echo base_url('sentbox') ?>" class="nav-link <?php if ($this->uri->segment(1) == "sentbox") { echo "active"; } ?>">
+								<i class="far fa-circle nav-icon"></i>
+								<p>Sentbox</p>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a href="<?php echo base_url('outbox') ?>" class="nav-link <?php if ($this->uri->segment(1) == "outbox") { echo "active"; } ?>">
 								<i class="far fa-circle nav-icon"></i>
 								<p>Outbox</p>
 							</a>
 						</li>
-						<li class="nav-item">
-							<a href="<?php echo base_url('mail_box/draft') ?>" class="nav-link">
-								<i class="far fa-circle nav-icon"></i>
-								<p>Draft</p>
-							</a>
-						</li>
 					</ul>
 				</li>
-				<li class="nav-item">
+				<li class="nav-item <?php if ($this->uri->segment(1) == "contact" || $this->uri->segment(1) == "contact_group") { echo "menu-is-opening menu-open"; } ?>">
 					<a href="#" class="nav-link">
 						<i class="nav-icon far fa-file"></i>
 						<p>
@@ -116,32 +99,41 @@
 					</a>
 					<ul class="nav nav-treeview">
 						<li class="nav-item">
-							<a href="<?php echo base_url('contact/group_contact') ?>" class="nav-link">
+							<a href="<?php echo base_url('contact') ?>" class="nav-link <?php if ($this->uri->segment(1) == "contact") { echo "active"; } ?>">
 								<i class="far fa-circle nav-icon"></i>
-								<p>Group Contact</p>
+								<p>Contact</p>
 							</a>
 						</li>
 						<li class="nav-item">
-							<a href="<?php echo base_url('contact/import_contact') ?>" class="nav-link">
+							<a href="<?php echo base_url('contact_group') ?>" class="nav-link <?php if ($this->uri->segment(1) == "contact_group") { echo "active"; } ?>">
 								<i class="far fa-circle nav-icon"></i>
-								<p>Import Contact</p>
+								<p>Contact Group</p>
 							</a>
 						</li>
 					</ul>
 				</li>
 				<li class="nav-item">
-					<a href="<?php echo base_url('user/user') ?>" class="nav-link">
+					<a href="<?php echo base_url('autoreply') ?>" class="nav-link <?php if ($this->uri->segment(1) == "autoreply")  echo "active"; ?>">
+						<i class="nav-icon fas fa-comment-alt"></i>
+						<p>
+							Autoreply
+						</p>
+					</a>
+				</li>
+				<li class="nav-header">Setup Managements</li>
+				<li class="nav-item">
+					<a href="<?php echo base_url('user') ?>" class="nav-link <?php if ($this->uri->segment(1) == "user")  echo "active"; ?>">
 						<i class="nav-icon fas fa-users"></i>
 						<p>
-							User
+							Users
 						</p>
 					</a>
 				</li>
 				<li class="nav-item">
-					<a href="<?php echo base_url('logout') ?>" class="nav-link">
-						<i class="nav-icon fas fa-arrow-circle-left"></i>
+					<a href="<?php echo base_url('phone') ?>" class="nav-link <?php if ($this->uri->segment(1) == "phone")  echo "active"; ?>">
+						<i class="nav-icon fas fa-phone"></i>
 						<p>
-							Logout
+							Phone
 						</p>
 					</a>
 				</li>
