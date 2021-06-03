@@ -123,7 +123,7 @@
 				<li class="nav-header">Setup Managements</li>
 				<li class="nav-item">
 					<a href="<?php echo base_url('user') ?>" class="nav-link <?php if ($this->uri->segment(1) == "user")  echo "active"; ?>">
-						<i class="nav-icon fas fa-users"></i>
+						<i class="nav-icon fas fa-user"></i>
 						<p>
 							Users
 						</p>
@@ -134,6 +134,14 @@
 						<i class="nav-icon fas fa-phone"></i>
 						<p>
 							Phone
+						</p>
+					</a>
+				</li>
+				<li class="nav-item">
+					<a href="<?php echo base_url('group') ?>" class="nav-link <?php if ($this->uri->segment(1) == "group")  echo "active"; ?>">
+						<i class="nav-icon fas fa-users"></i>
+						<p>
+							Group
 						</p>
 					</a>
 				</li>

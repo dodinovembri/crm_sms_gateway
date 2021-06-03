@@ -33,10 +33,8 @@ class UserController extends CI_Controller {
 
     public function store()
     {
-        $nip = $this->input->post('nip');
         $name = $this->input->post('name');
         $email = $this->input->post('email');
-        $position = $this->input->post('position');
         $image = $this->input->post('image');
         $birth_place = $this->input->post('birth_place');
         $religion = $this->input->post('religion');
@@ -65,35 +63,31 @@ class UserController extends CI_Controller {
             if ($this->upload->do_upload('image'))
             {
                 $data = array(
-                    'nip' => $nip,
                     'name' => $name,
                     'email' => $email,
-                    'position' => $position,
                     'image' => $this->upload->data('file_name'),
                     'birth_place' => $birth_place,
                     'religion' => $religion,
                     'sex' => $sex,
                     'address' => $address,
                     'phone_number' => $phone_number,
-                    'role_id' => $role_id,
                     'password' => $password,
+                    'role_id' => $role_id,
                     'status' => $status
                 );
             }
             else
             {                          
                 $data = array(
-                    'nip' => $nip,
                     'name' => $name,
                     'email' => $email,
-                    'position' => $position,
                     'birth_place' => $birth_place,
                     'religion' => $religion,
                     'sex' => $sex,
                     'address' => $address,
                     'phone_number' => $phone_number,
-                    'role_id' => $role_id,
                     'password' => $password,
+                    'role_id' => $role_id,
                     'status' => $status
                 );
             }
@@ -124,10 +118,8 @@ class UserController extends CI_Controller {
 
     public function update($id)
     {
-        $nip = $this->input->post('nip');
         $name = $this->input->post('name');
         $email = $this->input->post('email');
-        $position = $this->input->post('position');
         $image = $this->input->post('image');
         $birth_place = $this->input->post('birth_place');
         $religion = $this->input->post('religion');
@@ -156,35 +148,31 @@ class UserController extends CI_Controller {
             if ($this->upload->do_upload('image'))
             {
                 $data = array(
-                    'nip' => $nip,
                     'name' => $name,
                     'email' => $email,
-                    'position' => $position,
                     'image' => $this->upload->data('file_name'),
                     'birth_place' => $birth_place,
                     'religion' => $religion,
                     'sex' => $sex,
                     'address' => $address,
                     'phone_number' => $phone_number,
-                    'role_id' => $role_id,
                     'password' => $password,
+                    'role_id' => $role_id,
                     'status' => $status
                 );
             }
             else
             {                          
                 $data = array(
-                    'nip' => $nip,
                     'name' => $name,
                     'email' => $email,
-                    'position' => $position,
                     'birth_place' => $birth_place,
                     'religion' => $religion,
                     'sex' => $sex,
                     'address' => $address,
                     'phone_number' => $phone_number,
-                    'role_id' => $role_id,
                     'password' => $password,
+                    'role_id' => $role_id,
                     'status' => $status
                 );
             }

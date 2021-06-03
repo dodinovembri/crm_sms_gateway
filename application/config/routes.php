@@ -157,3 +157,12 @@ $route['autoreply/edit/(:any)'] = 'AutoReplyController/edit/$1';
 $route['autoreply/show/(:any)'] = 'AutoReplyController/show/$1';
 $route['autoreply/update/(:any)'] = 'AutoReplyController/update/$1';
 $route['autoreply/destroy/(:any)'] = 'AutoReplyController/destroy/$1';
+
+// routes for group
+$route['group'] = 'GroupController';
+$route['group/create'] = 'GroupController/create';
+$route['group/store'] = 'GroupController/store';
+$route['group/edit/(:any)'] = 'GroupController/edit/$1';
+$route['group/show/(:any)'] = 'GroupController/show/$1';
+$route['group/update/(:any)'] = 'GroupController/update/$1';
+$route['group/destroy/(:any)'] = 'GroupController/destroy/$1';
