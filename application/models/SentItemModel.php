@@ -2,7 +2,7 @@
 
 class SentItemModel extends CI_Model
 {
-    private $_table = "sent_items";
+    private $_table = "sentitems";
 
     public function get()
     {

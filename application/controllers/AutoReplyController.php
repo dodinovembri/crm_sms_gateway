@@ -6,7 +6,7 @@ class AutoreplyController extends CI_Controller {
     function __construct()
     {
         parent::__construct();
-        $this->load->model('Autoreply');
+        $this->load->model('AutoreplyModel');
 
         if ($this->session->userdata('logged_in') != 1) {
             return redirect(base_url('login'));
@@ -15,11 +15,11 @@ class AutoreplyController extends CI_Controller {
 
 	public function index()
 	{
-        $data['phones'] = $this->PhoneModel->get()->result();
+        $data['autoreplies'] = $this->AutoreplyModel->get()->result();
 
         $this->load->view('templates/header');
         $this->load->view('templates/sidebar');
-        $this->load->view('phone/index');
+        $this->load->view('autoreply/index', $data);
         $this->load->view('templates/footer');
 	}
 
@@ -27,72 +27,66 @@ class AutoreplyController extends CI_Controller {
     {
         $this->load->view('templates/header');
         $this->load->view('templates/sidebar');
-        $this->load->view('phone/create');
+        $this->load->view('autoreply/create');
         $this->load->view('templates/footer');
     }
 
     public function store()
     {
-        $id = $this->input->post('id');
-        $imei = $this->input->post('imei');
-        $imsi = $this->input->post('imsi');
-        $client = $this->input->post('client');
+        $code = $this->input->post('code');
+        $description = $this->input->post('description');
+        $status = $this->input->post('status$status');
 
         $data = array(
-            'id' => $id,
-            'imei' => $imei,
-            'imsi' => $imsi,
-            'client' => $client
+            'code' => $code,
+            'description' => $description,
+            'status' => $status
         );
 
-        $this->PhoneModel->insert($data);
-        $this->session->set_flashdata('success', "Success create new phone!");
-        return redirect(base_url('phone'));
+        $this->AutoreplyModel->insert($data);
+        $this->session->set_flashdata('success', "Success create new autoreply!");
+        return redirect(base_url('autoreply'));
     }
 
     public function show($id)
     {
-        $data['phone'] = $this->PhoneModel->getById($id)->row();
+        $data['autoreply'] = $this->AutoreplyModel->getById($id)->row();
 
         $this->load->view('templates/header');
         $this->load->view('templates/sidebar');
-        $this->load->view('phone/show', $data);
+        $this->load->view('autoreply/show', $data);
         $this->load->view('templates/footer');
     }
 
     public function edit($id)
     {
-        $data['phone'] = $this->PhoneModel->getById($id)->row();
+        $data['autoreply'] = $this->AutoreplyModel->getById($id)->row();
 
         $this->load->view('templates/header');
         $this->load->view('templates/sidebar');
-        $this->load->view('phone/edit', $data);
+        $this->load->view('autoreply/edit', $data);
         $this->load->view('templates/footer');
     }
 
     public function update($id)
     {
-        $id = $this->input->post('id');
-        $imei = $this->input->post('imei');
-        $imsi = $this->input->post('imsi');
-        $client = $this->input->post('client');
+        $description = $this->input->post('description');
+        $status = $this->input->post('status$status');
 
         $data = array(
-            'id' => $id,
-            'imei' => $imei,
-            'imsi' => $imsi,
-            'client' => $client
+            'description' => $description,
+            'status' => $status
         );
 
-        $this->PhoneModel->update($data, $id);
-        $this->session->set_flashdata('success', "Success update phone!");
-        return redirect(base_url('phone'));
+        $this->AutoreplyModel->update($data, $id);
+        $this->session->set_flashdata('success', "Success update autoreply!");
+        return redirect(base_url('autoreply'));
     }
 
     public function destroy($id)
     {
-        $this->PhoneModel->destroy($id);        
+        $this->AutoreplyModel->destroy($id);        
         $this->session->set_flashdata('success', "Success deleted data!");
-        return redirect(base_url('phone'));
+        return redirect(base_url('autoreply'));
     }
 }

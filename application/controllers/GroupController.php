@@ -19,7 +19,7 @@ class GroupController extends CI_Controller {
 
         $this->load->view('templates/header');
         $this->load->view('templates/sidebar');
-        $this->load->view('group/index');
+        $this->load->view('group/index', $data);
         $this->load->view('templates/footer');
 	}
 
@@ -77,7 +77,6 @@ class GroupController extends CI_Controller {
         $status = $this->input->post('status');
 
         $data = array(
-            'group_code' => $group_code,
             'group_name' => $group_name,
             'description' => $description,
             'status' => $status

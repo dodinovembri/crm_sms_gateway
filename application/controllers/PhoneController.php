@@ -19,7 +19,7 @@ class PhoneController extends CI_Controller {
 
         $this->load->view('templates/header');
         $this->load->view('templates/sidebar');
-        $this->load->view('phone/index');
+        $this->load->view('phone/index', $data);
         $this->load->view('templates/footer');
 	}
 

@@ -37,7 +37,7 @@
 					</a>
 				</li>
 				<li class="nav-header">Transactions</li>
-				<li class="nav-item <?php if ($this->uri->segment(1) == "single_message/*" || $this->uri->segment(1) == "broadcast_message/*") { echo "menu-is-opening menu-open"; } ?> ">
+				<li class="nav-item <?php if ($this->uri->segment(1) == "single_message" || $this->uri->segment(1) == "broadcast_message") { echo "menu-is-opening menu-open"; } ?> ">
 					<a href="#" class="nav-link">
 						<i class="nav-icon far fa-comments"></i>
 						<p>
@@ -47,13 +47,13 @@
 					</a>
 					<ul class="nav nav-treeview">
 						<li class="nav-item">
-							<a href="<?php echo base_url('single_message/create') ?>" class="nav-link <?php if ($this->uri->segment(1) == "single_message/create") { echo "active"; } ?>">
+							<a href="<?php echo base_url('single_message/create') ?>" class="nav-link <?php if ($this->uri->segment(1) == "single_message") { echo "active"; } ?>">
 								<i class="far fa-circle nav-icon"></i>
 								<p>Single Message</p>
 							</a>
 						</li>
 						<li class="nav-item">
-							<a href="<?php echo base_url('broadcast_message/create') ?>" class="nav-link <?php if ($this->uri->segment(1) == "broadcast_message/create") { echo "active"; } ?>">
+							<a href="<?php echo base_url('broadcast_message/create') ?>" class="nav-link <?php if ($this->uri->segment(1) == "broadcast_message") { echo "active"; } ?>">
 								<i class="far fa-circle nav-icon"></i>
 								<p>Broadcast Message</p>
 							</a>

@@ -1,8 +1,8 @@
 <?php
 
-class OutboxModel extends CI_Model
+class AutoreplyModel extends CI_Model
 {
-    private $_table = "outbox";
+    private $_table = "autoreply";
 
     public function get()
     {

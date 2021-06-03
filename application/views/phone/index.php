@@ -22,7 +22,7 @@
 		<!-- Default box -->
 		<div class="card">
 			<div class="card-body">
-				<a href=""><button type="button" class="btn btn-block btn-primary" style="width: 13%;">Create New</button></a>
+				<a href="<?php echo base_url('phone/create') ?>"><button type="button" class="btn btn-block btn-primary" style="width: 13%;">Create New</button></a>
 				<table id="example1" class="table table-bordered table-striped">
 					<thead>
 						<tr>
