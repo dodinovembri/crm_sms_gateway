@@ -103,6 +103,7 @@ class UserController extends CI_Controller {
         $data['user'] = $this->UserModel->getById($id)->row();
 
         $this->load->view('templates/header');
+        $this->load->view('templates/sidebar');
         $this->load->view('user/show', $data);
         $this->load->view('templates/footer');
     }
@@ -112,6 +113,7 @@ class UserController extends CI_Controller {
         $data['user'] = $this->UserModel->getById($id)->row();
 
         $this->load->view('templates/header');
+        $this->load->view('templates/sidebar');
         $this->load->view('user/edit', $data);
         $this->load->view('templates/footer');
     }

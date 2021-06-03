@@ -39,10 +39,10 @@ class PhoneController extends CI_Controller {
         $client = $this->input->post('client');
 
         $data = array(
-            'id' => $id,
-            'imei' => $imei,
-            'imsi' => $imsi,
-            'client' => $client
+            'ID' => $id,
+            'IMEI' => $imei,
+            'IMSI' => $imsi,
+            'Client' => $client
         );
 
         $this->PhoneModel->insert($data);
@@ -70,21 +70,19 @@ class PhoneController extends CI_Controller {
         $this->load->view('templates/footer');
     }
 
-    public function update($id)
+    public function update($imei)
     {
         $id = $this->input->post('id');
-        $imei = $this->input->post('imei');
         $imsi = $this->input->post('imsi');
         $client = $this->input->post('client');
 
         $data = array(
-            'id' => $id,
-            'imei' => $imei,
-            'imsi' => $imsi,
-            'client' => $client
+            'ID' => $id,
+            'IMSI' => $imsi,
+            'Client' => $client
         );
 
-        $this->PhoneModel->update($data, $id);
+        $this->PhoneModel->update($data, $imei);
         $this->session->set_flashdata('success', "Success update phone!");
         return redirect(base_url('phone'));
     }

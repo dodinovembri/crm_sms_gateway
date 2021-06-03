@@ -16,19 +16,19 @@ class PhoneModel extends CI_Model
 
     public function getById($id)
     {
-        $this->db->where('id', $id);
+        $this->db->where('IMEI', $id);
         return $this->db->get($this->_table);
     }      
 
     public function update($data, $id)
     {
-        $this->db->where('id', $id);
+        $this->db->where('IMEI', $id);
         return $this->db->update($this->_table, $data);
     }    
 
     public function destroy($id)
     {
-        $this->db->where('id', $id);
+        $this->db->where('IMEI', $id);
         return $this->db->delete($this->_table);
     } 
 }

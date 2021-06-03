@@ -3,7 +3,7 @@
 	<!-- Brand Logo -->
 	<a href="<?php echo base_url('home') ?>" class="brand-link">
 		<img src="<?php echo base_url() ?>assets/dist/img/logo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-		<span class="brand-text font-weight-light">SMS GATEWAY</span>
+		<span class="brand-text font-weight-light">SMS Gateway</span>
 	</a>
 	<?php
 		$CI = &get_instance();
@@ -16,7 +16,7 @@
 		<!-- Sidebar user panel (optional) -->
 		<div class="user-panel mt-3 pb-3 mb-3 d-flex">
 			<div class="image">
-				<img src=<?php echo base_url('uploads/user/'); echo $user->image; ?>" class="img-circle elevation-2">
+				<img src="<?php echo base_url('uploads/user/'); echo $user->image; ?>" class="img-circle elevation-2">
 			</div>
 			<div class="info">
 				<a href="<?php echo base_url('user/user') ?>" class="d-block"><?php echo $user->name; ?></a>
@@ -89,7 +89,7 @@
 						</li>
 					</ul>
 				</li>
-				<li class="nav-item <?php if ($this->uri->segment(1) == "contact" || $this->uri->segment(1) == "contact_group") { echo "menu-is-opening menu-open"; } ?>">
+				<li class="nav-item <?php if ($this->uri->segment(1) == "contact" || $this->uri->segment(1) == "group" || $this->uri->segment(1) == "contact_groups" || $this->uri->segment(1) == "contact_group") { echo "menu-is-opening menu-open"; } ?>">
 					<a href="#" class="nav-link">
 						<i class="nav-icon far fa-file"></i>
 						<p>
@@ -105,7 +105,7 @@
 							</a>
 						</li>
 						<li class="nav-item">
-							<a href="<?php echo base_url('contact_group') ?>" class="nav-link <?php if ($this->uri->segment(1) == "contact_group") { echo "active"; } ?>">
+							<a href="<?php echo base_url('group') ?>" class="nav-link <?php if ($this->uri->segment(1) == "group" || $this->uri->segment(1) == "contact_group"  || $this->uri->segment(1) == "contact_groups" ) { echo "active"; } ?>">
 								<i class="far fa-circle nav-icon"></i>
 								<p>Contact Group</p>
 							</a>
@@ -134,14 +134,6 @@
 						<i class="nav-icon fas fa-phone"></i>
 						<p>
 							Phone
-						</p>
-					</a>
-				</li>
-				<li class="nav-item">
-					<a href="<?php echo base_url('group') ?>" class="nav-link <?php if ($this->uri->segment(1) == "group")  echo "active"; ?>">
-						<i class="nav-icon fas fa-users"></i>
-						<p>
-							Group
 						</p>
 					</a>
 				</li>

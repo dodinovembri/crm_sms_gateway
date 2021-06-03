@@ -1,84 +1,84 @@
-<?php $this->load->view('components/topbar') ?>
-<div id="layoutSidenav">
-    <?php $this->load->view('components/sidebar') ?>
-    <div id="layoutSidenav_content">
-        <main>
-            <header class="page-header page-header-compact page-header-light border-bottom bg-white mb-4">
-                <div class="container-xl px-4">
-                    <div class="page-header-content">
-                        <div class="row align-items-center justify-content-between pt-3">
-                            <div class="col-auto mb-3">
-                                <h1 class="page-header-title">
-                                    <a href="<?php echo base_url('user') ?>">User List</a> &nbsp;- Detail
-                                </h1>
-                            </div>
-                        </div>
-                    </div>
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Create User</h1>
                 </div>
-            </header>
-            <div class="container-xl px-4 mt-4">
-                <div class="row">
-                    <div class="col-xl-4">
-                        <div class="card mb-4 mb-xl-0">
-                            <div class="card-header">Profile Picture</div>
-                            <div class="card-body text-center">
-                                <img class="img-account-profile rounded-circle mb-2" src="<?php echo base_url('uploads/user/'); echo $user->image ?>" alt="" />
-                                <div class="small font-italic text-muted"><?php echo $user->name; ?></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-8">
-                        <div class="card mb-4">
-                            <div class="card-header">Account Details</div>
-                            <div class="card-body">
-                                <form>
-                                    <div class="mb-3">
-                                        <label class="small mb-1">NIP</label>
-                                        <input class="form-control" type="text" value="<?php echo $user->nip; ?>" />
-                                    </div>                                    
-                                    <div class="row gx-3 mb-3">
-                                        <div class="col-md-6">
-                                            <label class="small mb-1">Email</label>
-                                            <input class="form-control" type="text" value="<?php echo $user->email; ?>" />
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label class="small mb-1">Position</label>
-                                            <input class="form-control" type="text" value="<?php echo $user->position; ?>" />
-                                        </div>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label class="small mb-1">Sex</label>
-                                        <input class="form-control" type="text" value="<?php echo check_sex($user->sex) ?>" />
-                                    </div> 
-                                    <div class="mb-3">
-                                        <label class="small mb-1">Birth Place</label>
-                                        <textarea rows="3" class="form-control"><?php echo $user->birth_place; ?></textarea>
-                                    </div>
-                                    <div class="row gx-3 mb-3">
-                                        <div class="col-md-6">
-                                            <label class="small mb-1">Religion</label>
-                                            <input class="form-control" type="text" value="<?php echo $user->religion; ?>" />
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label class="small mb-1">Phone Number</label>
-                                            <input class="form-control" type="text" name="phone_number" value="<?php echo $user->phone_number; ?>" />
-                                        </div>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label class="small mb-1">Address</label>
-                                        <textarea rows="3" class="form-control"><?php echo $user->address; ?></textarea>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label class="small mb-1">Status</label>
-                                        <input class="form-control" type="text" value="<?php echo check_status($user->status) ?>" />
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="<?= base_url('home') ?>">Home</a></li>
+                        <li class="breadcrumb-item"><a href="<?= base_url('user') ?>">Users</a></li>
+                        <li class="breadcrumb-item active">Create User</li>
+                    </ol>
                 </div>
             </div>
-        </main>
-        <?php $this->load->view('components/footer') ?>
-    </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <!-- left column -->
+                <div class="col-md-12">
+                    <!-- general form elements -->
+                    <div class="card card-primary">
+                        <!-- form start -->
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Name</label>
+                                <input type="text" name="name" value="<?= $user->name ?>" class="form-control" id="exampleInputEmail1">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Email</label>
+                                <input type="email" name="email" value="<?= $user->email ?>" class="form-control" id="exampleInputEmail1">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Image</label><br>
+                                <img src="<?= base_url('uploads/user/'); echo $user->image; ?>" alt="" width="20%">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Birth Place</label>
+                                <textarea rows="3" name="birth_place" value="<?= $user->birth_place ?>" class="form-control" id="exampleInputEmail1" ></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Religion</label>
+                                <input type="text" name="religion" value="<?= $user->religion ?>" class="form-control" id="exampleInputEmail1" >
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Sex</label>
+                                <input type="text" name="religion" value="<?= check_sex($user->sex) ?>" class="form-control" id="exampleInputEmail1" >
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Address</label>
+                                <textarea name="address" rows="3" value="<?= $user->address ?>" class="form-control" id="exampleInputEmail1" ></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Phone Number</label>
+                                <input type="text" name="phone_number" value="<?= $user->phone_number ?>" class="form-control" id="exampleInputEmail1" >
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Role</label>
+                                <input type="text" name="religion" value="<?= check_role($user->role_id) ?>" class="form-control" id="exampleInputEmail1" >
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Status</label>
+                                <input type="text" name="religion" value="<?= check_status($user->status) ?>" class="form-control" id="exampleInputEmail1" >
+                            </div>
+                        </div>
+                        <!-- /.card-body -->
+
+                        <div class="card-footer">
+                            <a href="<?php echo base_url('user') ?>"><button type="button" class="btn btn-secondary">Back to List</button></a>
+                        </div>
+                    </div>
+                    <!-- /.card -->
+                </div>
+            </div>
+            <!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
 </div>

@@ -8,9 +8,9 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item"><a href="#">Phones</a></li>
-                        <li class="breadcrumb-item active">Create Phone</li>
+                        <li class="breadcrumb-item"><a href="<?= base_url('home') ?>">Home</a></li>
+                        <li class="breadcrumb-item"><a href="<?= base_url('autoreply') ?>">Autoreply</a></li>
+                        <li class="breadcrumb-item active">Create Autoreply</li>
                     </ol>
                 </div>
             </div>
@@ -26,19 +26,19 @@
                     <!-- general form elements -->
                     <div class="card card-primary">
                         <!-- form start -->
-                        <form>
+                        <form method="POST" action="<?= base_url('autoreply/store') ?>" enctype="multipart/form-data">
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Code</label>
-                                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                                    <input type="text" name="code" class="form-control" id="exampleInputEmail1" placeholder="Enter code" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Description</label>
-                                    <textarea rows="3" class="form-control" id="exampleInputEmail1" placeholder="Enter email"></textarea>
+                                    <textarea rows="3" name="description" class="form-control" id="exampleInputEmail1" placeholder="Enter email"></textarea>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Status</label>
-                                    <select name="" id="" class="form-control">
+                                    <select name="status" id="" class="form-control">
                                         <option value="1">Active</option>
                                         <option value="0">Inactive</option>
                                     </select>

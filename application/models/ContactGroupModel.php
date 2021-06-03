@@ -18,7 +18,22 @@ class ContactGroupModel extends CI_Model
     {
         $this->db->where('id', $id);
         return $this->db->get($this->_table);
-    }      
+    }     
+    
+    public function getByWhere($id)
+    {
+        $this->db->where('group_id', $id);
+        return $this->db->get($this->_table);
+    }
+
+    public function getByWhereWithJoin($id)
+    {
+        $this->db->select('*');
+        $this->db->from('contact_group');
+        $this->db->join('contact', 'contact.id = contact_group.contact_id');
+        $this->db->where('group_id', $id);
+        return $this->db->get();
+    }
 
     public function update($data, $id)
     {

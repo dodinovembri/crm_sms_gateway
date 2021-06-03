@@ -35,7 +35,7 @@ class AutoreplyController extends CI_Controller {
     {
         $code = $this->input->post('code');
         $description = $this->input->post('description');
-        $status = $this->input->post('status$status');
+        $status = $this->input->post('status');
 
         $data = array(
             'code' => $code,
@@ -70,10 +70,12 @@ class AutoreplyController extends CI_Controller {
 
     public function update($id)
     {
+        $code = $this->input->post('code');
         $description = $this->input->post('description');
-        $status = $this->input->post('status$status');
+        $status = $this->input->post('status');
 
         $data = array(
+            'code' => $code,
             'description' => $description,
             'status' => $status
         );

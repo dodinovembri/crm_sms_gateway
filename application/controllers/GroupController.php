@@ -47,7 +47,7 @@ class GroupController extends CI_Controller {
 
         $this->GroupModel->insert($data);
         $this->session->set_flashdata('success', "Success create new group!");
-        return redirect(base_url('user'));
+        return redirect(base_url('group'));
     }
 
     public function show($id)

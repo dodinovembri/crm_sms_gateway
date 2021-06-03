@@ -6,16 +6,22 @@ class ContactGroupController extends CI_Controller {
     function __construct()
     {
         parent::__construct();
-        $this->load->model('ContactGroupModel');
+        $this->load->model(['ContactGroupModel', 'ContactModel']);
 
         if ($this->session->userdata('logged_in') != 1) {
             return redirect(base_url('login'));
         }
     }
 
-	public function index()
+	public function index($id)
 	{
-        $data['contact_groups'] = $this->ContactGroupModel->get()->result();
+        $alternative = array(
+            'group_id' => $id
+        );
+
+        $this->session->set_userdata($alternative);
+
+        $data['contact_groups'] = $this->ContactGroupModel->getByWhere($id)->result();
 
         $this->load->view('templates/header');
         $this->load->view('templates/sidebar');
@@ -25,27 +31,28 @@ class ContactGroupController extends CI_Controller {
 
     public function create()
     {
+        $data['contacts'] = $this->ContactModel->get()->result();
+
         $this->load->view('templates/header');
         $this->load->view('templates/sidebar');
-        $this->load->view('contact_group/create');
+        $this->load->view('contact_group/create', $data);
         $this->load->view('templates/footer');
     }
 
     public function store()
     {
-        $contact_id = $this->input->post('contact_id');
-        $group_id = $this->input->post('group_id');
-        $status = $this->input->post('status');
-
-        $data = array(
-            'contact_id' => $contact_id,
-            'group_id' => $group_id,
-            'status' => $status
-        );
-
-        $this->ContactGroupModel->insert($data);
+        $contact = $this->input->post('contact');
+        $group_id = $this->session->userdata('group_id');
+        foreach ($contact as $key => $value) {
+            $data = array(
+                'contact_id' => $value,
+                'group_id' => $group_id,
+                'status' => 1
+            );    
+            $this->ContactGroupModel->insert($data);
+        }
         $this->session->set_flashdata('success', "Success create new contact group!");
-        return redirect(base_url('contact_group'));
+        return redirect(base_url('contact_group/create'));
     }
 
     public function show($id)

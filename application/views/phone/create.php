@@ -8,8 +8,8 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item"><a href="#">Phones</a></li>
+                        <li class="breadcrumb-item"><a href="<?= base_url('home') ?>">Home</a></li>
+                        <li class="breadcrumb-item"><a href="<?= base_url('phone') ?>">Phones</a></li>
                         <li class="breadcrumb-item active">Create Phone</li>
                     </ol>
                 </div>
@@ -26,26 +26,23 @@
                     <!-- general form elements -->
                     <div class="card card-primary">
                         <!-- form start -->
-                        <form>
+                        <form method="POST" action="<?= base_url('phone/store') ?>">
                             <div class="card-body">
                                 <div class="form-group">
+                                    <label for="exampleInputEmail1">ID</label>
+                                    <input type="id" name="id" class="form-control" id="exampleInputEmail1" placeholder="Enter ID" required>
+                                </div>
+                                <div class="form-group">
                                     <label for="exampleInputEmail1">IMEI</label>
-                                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                                    <input type="text" name="imei" class="form-control" id="exampleInputEmail1" placeholder="Enter IMEI" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">IMSI</label>
-                                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                                    <input type="text" name="imsi" class="form-control" id="exampleInputEmail1" placeholder="Enter IMSI" required >
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Net Code</label>
-                                    <textarea rows="3" class="form-control" id="exampleInputEmail1" placeholder="Enter email"></textarea>
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1">Status</label>
-                                    <select name="" id="" class="form-control">
-                                        <option value="1">Active</option>
-                                        <option value="0">Inactive</option>
-                                    </select>
+                                    <label for="exampleInputEmail1">Client</label>
+                                    <input type="text" name="client" class="form-control" id="exampleInputEmail1" placeholder="Enter client" required>
                                 </div>
                             </div>
                             <!-- /.card-body -->
