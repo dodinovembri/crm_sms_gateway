@@ -7,6 +7,7 @@ class ContactGroupController extends CI_Controller {
     {
         parent::__construct();
         $this->load->model(['ContactGroupModel', 'ContactModel']);
+        $this->load->library('Excel');
 
         if ($this->session->userdata('logged_in') != 1) {
             return redirect(base_url('login'));
@@ -21,7 +22,7 @@ class ContactGroupController extends CI_Controller {
 
         $this->session->set_userdata($alternative);
 
-        $data['contact_groups'] = $this->ContactGroupModel->getByWhere($id)->result();
+        $data['contact_groups'] = $this->ContactGroupModel->getCustomizeJoin("contact_group", "contact", "group", "contact_id", "group_id", "group_id", $id, "left")->result();
 
         $this->load->view('templates/header');
         $this->load->view('templates/sidebar');
@@ -95,5 +96,70 @@ class ContactGroupController extends CI_Controller {
         $this->ContactGroupModel->destroy($id);        
         $this->session->set_flashdata('success', "Success deleted data!");
         return redirect(base_url('contact_group'));
+    }
+
+    public function upload()
+    {
+        // $fileName = $_FILES['file']['name'];
+        $group_id = $this->session->userdata('group_id');
+        $fileNametemp = uniqid();
+        // $config['file_name']            = $fileNametemp;
+        // $fileName = $config['file_name'];
+          
+        $config['upload_path'] = './assets/contacts'; //path upload 
+        $config['allowed_types'] = 'xls|xlsx|csv'; //tipe file yang diperbolehkan
+        $config['max_size'] = 10000; // maksimal sizze
+        $config['file_name'] = $fileNametemp;  // nama file
+ 
+        $this->load->library('upload'); //meload librari upload
+        $this->upload->initialize($config);
+          
+        if(! $this->upload->do_upload('file') ){
+            echo $this->upload->display_errors();exit();
+        }
+              
+        $fileName = $this->upload->data('file_name');
+        // $inputFileName = base_url("/assets/contacts/$fileName");
+        $inputFileName = './assets/contacts/'.$fileName;
+
+        // try {
+                $inputFileType = PHPExcel_IOFactory::identify($inputFileName);
+                $objReader = PHPExcel_IOFactory::createReader($inputFileType);
+                $objPHPExcel = $objReader->load($inputFileName);
+            // } catch(Exception $e) {
+            //     die('Error loading file "'.pathinfo($inputFileName,PATHINFO_BASENAME).'": '.$e->getMessage());
+            // }
+ 
+            $sheet = $objPHPExcel->getSheet(0);
+            $highestRow = $sheet->getHighestRow();
+            $highestColumn = $sheet->getHighestColumn();
+ 
+            for ($row = 4; $row <= $highestRow; $row++){  //  Read a row of data into an array                 
+                $rowData = $sheet->rangeToArray('B' . $row . ':' . $highestColumn . $row, NULL, TRUE, FALSE);   
+ 
+                 // Sesuaikan key array dengan nama kolom di database                                                         
+                 $data = array(
+                    "participants_number"=> $rowData[0][0],
+                    "name"=> $rowData[0][1],
+                    "phone_number"=> $rowData[0][2],
+                    "major"=> $rowData[0][3],
+                    "status" => 1,
+                );
+ 
+                $this->ContactModel->insert($data);
+                $last_id = $this->db->insert_id();
+
+                $data_group = array(
+                    "contact_id" => $last_id,
+                    "group_id" => $group_id,
+                    "status" => 1,
+                );
+
+                $this->ContactGroupModel->insert($data_group);
+
+            }
+            $this->session->set_flashdata('success', "Success insert contact to this group!");
+            $group_id = $this->session->userdata('group_id');
+            return redirect(base_url("contact_groups/$group_id"));
     }
 }

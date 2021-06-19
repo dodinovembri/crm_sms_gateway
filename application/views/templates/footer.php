@@ -1,6 +1,6 @@
   <!-- /.content-wrapper -->
   <footer class="main-footer">
-    <strong><a href="https://teknik.univpgri-palembang.ac.id/">Fakultas Teknik Universitas PGRI Paelmbang</a>
+    <strong><a href="https://teknik.univpgri-palembang.ac.id/">Fakultas Teknik Universitas PGRI Palembang</a>
       <br>Copyright &copy; 2021.</strong>
     All rights reserved.
     <div class="float-right d-none d-sm-inline-block">

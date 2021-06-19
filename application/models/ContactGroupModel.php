@@ -6,7 +6,7 @@ class ContactGroupModel extends CI_Model
 
     public function get()
     {
-    	return $this->db->get($this->_table);
+        return $this->db->get($this->_table);
     }
 
     public function insert($data)
@@ -18,12 +18,22 @@ class ContactGroupModel extends CI_Model
     {
         $this->db->where('id', $id);
         return $this->db->get($this->_table);
-    }     
-    
+    }
+
     public function getByWhere($id)
     {
         $this->db->where('group_id', $id);
         return $this->db->get($this->_table);
+    }
+
+    public function getCustomizeJoin($table_one, $table_two, $table_three, $foreign, $foreign2, $condition, $id, $join_type)
+    {
+        $this->db->select('*');
+        $this->db->from($table_one);
+        $this->db->join($table_two, "$table_one.$foreign = $table_two.id", $join_type);
+        $this->db->join($table_three, "$table_one.$foreign2 = $table_three.id", $join_type);
+        $this->db->where($condition, $id);
+        return $this->db->get();
     }
 
     public function getByWhereWithJoin($id)
@@ -39,11 +49,11 @@ class ContactGroupModel extends CI_Model
     {
         $this->db->where('id', $id);
         return $this->db->update($this->_table, $data);
-    }    
+    }
 
     public function destroy($id)
     {
         $this->db->where('id', $id);
         return $this->db->delete($this->_table);
-    } 
+    }
 }

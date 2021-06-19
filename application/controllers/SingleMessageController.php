@@ -30,11 +30,13 @@ class SingleMessageController extends CI_Controller {
 
     public function store()
     {
+        $receiver_name = $this->input->post('receiver_name');
         $destination_number = $this->input->post('destination_number');
         $text = $this->input->post('text');
         $creator_id = $this->session->userdata('id');
 
         $data = array(
+            'ReceiverName' => $receiver_name,
             'DestinationNumber' => $destination_number,
             'TextDecoded' => $text,
             'CreatorID' => $creator_id

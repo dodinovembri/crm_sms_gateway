@@ -37,8 +37,8 @@
 					<thead>
 						<tr>
 							<th>No</th>
+							<th>Participants Number</th>
 							<th>Name</th>
-							<th>Email</th>
 							<th>Phone Number</th>
 							<th>Status</th>
 							<th>Actions</th>
@@ -48,10 +48,10 @@
 						<?php $no = 0; foreach ($contacts as $key => $value) { $no++; ?>
 							<tr>
 								<td><?php echo $no ?></td>
+								<td><?php echo $value->participants_number ?></td>
 								<td><?php echo $value->name ?></td>
-								<td><?php echo $value->email ?></td>
 								<td><?php echo $value->phone_number ?></td>
-								<td><?php echo $value->status ?></td>
+								<td><?php echo check_status($value->status) ?></td>
 								<td>
 									<a href="<?= base_url('contact/show/');
 												echo $value->id; ?>"><i class="fas fa-eye"></i></a> &nbsp;

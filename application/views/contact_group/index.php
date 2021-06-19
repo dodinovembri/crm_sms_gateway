@@ -33,24 +33,51 @@
 						<?php echo $this->session->flashdata('warning'); ?>
 					</div>
 				<?php } ?>
-				<a href="<?php echo base_url('contact_group/create') ?>"><button type="button" class="btn btn-block btn-primary" style="width: 13%;">Create New</button></a>
+				<a href="<?php echo base_url('contact_group/create') ?>"><button type="button" class="btn btn-block btn-primary" style="width: 13%; display: inline-block"><i class="fas fa-plus"></i> Create New</button></a>
+				<a href="#" data-toggle="modal" data-target="#contactUpload"><button type="button" class="btn btn-block btn-primary" style="width: 10%; display: inline-block"><i class="fas fa-upload"></i> Import</button></a>
+				<div class="modal fade" id="contactUpload">
+					<div class="modal-dialog">
+						<div class="modal-content bg-primary">
+							<div class="modal-header">
+								<h4 class="modal-title">Import Contact</h4>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<form method="POST" action="<?= base_url('contact_group/contact/upload') ?>" enctype="multipart/form-data">
+								<div class="modal-body">
+									<div class="form-group">
+										<label for="exampleInputEmail1">Contacts</label>
+										<input type="file" name="file" id="file" class="form-control" multiple>
+									</div>
+								</div>
+								<div class="modal-footer justify-content-between">
+									<button type="button" class="btn btn-outline-light" data-dismiss="modal">Cancel</button>
+									<button type="submit" class="btn btn-outline-light">Upload Data</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
 				<table id="example1" class="table table-bordered table-striped">
 					<thead>
 						<tr>
 							<th>No</th>
-							<th>Group Name</th>
 							<th>Contact Name</th>
+							<th>Group Name</th>
 							<th>Status</th>
 							<th>Actions</th>
 						</tr>
 					</thead>
 					<tbody>
-						<?php $no = 0; foreach ($contact_groups as $key => $value) { $no++; ?>
+						<?php $no = 0;
+						foreach ($contact_groups as $key => $value) {
+							$no++; ?>
 							<tr>
 								<td><?php echo $no ?></td>
-								<td><?php echo $value->contact_id ?></td>
-								<td><?php echo $value->group_id ?></td>
-								<td><?php echo $value->status ?></td>
+								<td><?php echo $value->name ?></td>
+								<td><?php echo $value->group_name ?></td>
+								<td><?php echo check_status($value->status) ?></td>
 								<td>
 									<a href="<?= base_url('contact_group/show/');
 												echo $value->id; ?>"><i class="fas fa-eye"></i></a> &nbsp;
@@ -73,7 +100,8 @@
 										</div>
 										<div class="modal-footer justify-content-between">
 											<button type="button" class="btn btn-outline-light" data-dismiss="modal">Cancel</button>
-											<a href="<?= base_url('contact_group/destroy/'); echo $value->id; ?>"><button type="button" class="btn btn-outline-light">Delete Data</button></a>
+											<a href="<?= base_url('contact_group/destroy/');
+														echo $value->id; ?>"><button type="button" class="btn btn-outline-light">Delete Data</button></a>
 										</div>
 									</div>
 									<!-- /.modal-content -->

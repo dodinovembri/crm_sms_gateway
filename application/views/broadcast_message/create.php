@@ -39,7 +39,8 @@
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Send to Group</label>
-                                    <select name="group_id" id="" class="form-control">
+                                    <select name="group_id" id="" class="select2bs4" multiple="multiple" data-placeholder="Select Group Contact"
+                          style="width: 100%;">
                                         <option value="">Select</option>
                                         <?php foreach ($groups as $key => $value) { ?>
                                             <option value="<?= $value->id ?>"><?= $value->group_code ?> - <?= $value->group_name ?></option>

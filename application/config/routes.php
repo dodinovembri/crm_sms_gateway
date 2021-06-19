@@ -143,7 +143,8 @@ $route['contact/destroy/(:any)'] = 'ContactController/destroy/$1';
 // routes for contact group
 $route['contact_groups/(:any)'] = 'ContactGroupController/index/$1';
 $route['contact_group/create'] = 'ContactGroupController/create';
-$route['contact_group/store'] = 'ContactGroupController/store';
+$route['contact_group/contact/upload'] = 'ContactGroupController/upload';
+$route['contact_group/contact/store'] = 'ContactGroupController/contact/';
 $route['contact_group/edit/(:any)'] = 'ContactGroupController/edit/$1';
 $route['contact_group/show/(:any)'] = 'ContactGroupController/show/$1';
 $route['contact_group/update/(:any)'] = 'ContactGroupController/update/$1';
