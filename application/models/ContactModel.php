@@ -31,4 +31,9 @@ class ContactModel extends CI_Model
         $this->db->where('id', $id);
         return $this->db->delete($this->_table);
     } 
+
+    public function countRows()
+    {
+        return $this->db->count_all_results($this->_table);
+    }    
 }
