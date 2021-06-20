@@ -6,7 +6,7 @@ class HomeController extends CI_Controller {
     function __construct()
     {
         parent::__construct();
-        $this->load->model(['InboxModel', 'SentItemModel', 'ContactModel', 'AutoReplyModel']);
+        $this->load->model(['InboxModel', 'SentItemModel', 'ContactModel', 'AutoreplyModel']);
         if ($this->session->userdata('logged_in') != 1) {
             return redirect(base_url('login'));
         }
