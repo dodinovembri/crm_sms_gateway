@@ -17,7 +17,7 @@ class HomeController extends CI_Controller {
         $data['total_inbox'] = $this->InboxModel->countRows(); 
         $data['total_sentitem'] = $this->SentItemModel->countRows();     
         $data['total_contact'] = $this->ContactModel->countRows();     
-        $data['total_autoreply'] = $this->AutoReplyModel->countRows();     
+        $data['total_autoreply'] = $this->AutoreplyModel->countRows();     
 
         $this->load->view('templates/header');
         $this->load->view('templates/sidebar');
