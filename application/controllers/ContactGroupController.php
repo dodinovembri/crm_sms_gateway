@@ -53,7 +53,7 @@ class ContactGroupController extends CI_Controller {
             $this->ContactGroupModel->insert($data);
         }
         $this->session->set_flashdata('success', "Success create new contact group!");
-        return redirect(base_url('contact_group/create'));
+        return redirect(base_url("contact_group/$group_id"));
     }
 
     public function show($id)

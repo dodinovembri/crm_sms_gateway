@@ -19,7 +19,7 @@
 				<img src="<?php echo base_url('uploads/user/'); echo $user->image; ?>" class="img-circle elevation-2">
 			</div>
 			<div class="info">
-				<a href="<?php echo base_url('user/user') ?>" class="d-block"><?php echo $user->name; ?></a>
+				<a href="<?php echo base_url('profile') ?>" class="d-block"><?php echo $user->name; ?></a>
 			</div>
 		</div>
 

@@ -34,16 +34,21 @@ class BroadcastMessageController extends CI_Controller {
         $text = $this->input->post('text');
         $creator_id = $this->session->userdata('id');
 
-        $all_contact_in_group = $this->ContactGroupModel->getByWhereWithJoin($group_id)->result();
+        foreach ($group_id as $key => $value) {
 
-        foreach ($all_contact_in_group as $key => $value) {
-            $data = array(
-                'DestinationNumber' => $value->phone_number,
-                'TextDecoded' => $text,
-                'CreatorID' => $creator_id
-            );
+            $all_contact_in_group = $this->ContactGroupModel->getByWhereWithJoin($value)->result();
     
-            $this->OutboxModel->insert($data);
+            foreach ($all_contact_in_group as $key => $value) {
+                $data = array(
+                    'ReceiverName' => $value->name,
+                    'DestinationNumber' => $value->phone_number,
+                    'TextDecoded' => $text,
+                    'CreatorID' => $creator_id
+                );
+        
+                $this->OutboxModel->insert($data);
+            }
+
         }
         $this->session->set_flashdata('success', "Success create new message!");
         return redirect(base_url('broadcast_message/create'));

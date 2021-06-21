@@ -51,7 +51,7 @@
 								<td><?php echo $no ?></td>
 								<td><?php echo $value->name ?></td>
 								<td><?php echo $value->phone_number ?></td>
-								<td><?php echo $value->role_id ?></td>
+								<td><?php echo check_role($value->role_id); ?></td>
 								<td>
 									<a href="<?= base_url('user/show/');
 												echo $value->id; ?>"><i class="fas fa-eye"></i></a> &nbsp;

@@ -22,25 +22,27 @@
             <div class="row">
                 <!-- left column -->
                 <div class="col-md-12">
-                <?php if ($this->session->flashdata('success')) { ?>
-					<div class="alert alert-success alert-dismissible" role="alert">
-						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-						<?php echo $this->session->flashdata('success'); ?>
-					</div>
-				<?php } elseif ($this->session->flashdata('warning')) { ?>
-					<div class="alert alert-warning" role="alert">
-						<?php echo $this->session->flashdata('warning'); ?>
-					</div>
-				<?php } ?>
+                    <?php if ($this->session->flashdata('success')) { ?>
+                        <div class="alert alert-success alert-dismissible" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            <?php echo $this->session->flashdata('success'); ?>
+                        </div>
+                    <?php } elseif ($this->session->flashdata('warning')) { ?>
+                        <div class="alert alert-warning" role="alert">
+                            <?php echo $this->session->flashdata('warning'); ?>
+                        </div>
+                    <?php } ?>
                     <!-- general form elements -->
                     <div class="card card-primary">
                         <!-- form start -->
                         <form method="POST" action="<?= base_url('broadcast_message/store') ?>">
+                            <div class="card-header" style="background-color: #007bff;">
+                                <h3 class="card-title" style="color: white;">Broadcast Message</h3>
+                            </div>
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Send to Group</label>
-                                    <select name="group_id" id="" class="select2bs4" multiple="multiple" data-placeholder="Select Group Contact"
-                          style="width: 100%;">
+                                    <select name="group_id[]" id="" class="select2bs4" multiple="multiple" data-placeholder="Select Group Contact" style="width: 100%;">
                                         <option value="">Select</option>
                                         <?php foreach ($groups as $key => $value) { ?>
                                             <option value="<?= $value->id ?>"><?= $value->group_code ?> - <?= $value->group_name ?></option>

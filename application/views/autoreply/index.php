@@ -49,7 +49,7 @@
 								<td><?php echo $no ?></td>
 								<td><?php echo $value->code ?></td>
 								<td><?php echo $value->description ?></td>
-								<td><?php echo $value->status ?></td>
+								<td><?php echo check_status($value->status); ?></td>
 								<td>
 									<a href="<?= base_url('autoreply/show/');
 												echo $value->id; ?>"><i class="fas fa-eye"></i></a> &nbsp;
