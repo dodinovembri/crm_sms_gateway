@@ -32,8 +32,23 @@ class ContactGroupModel extends CI_Model
         $this->db->from($table_one);
         $this->db->join($table_two, "$table_one.$foreign = $table_two.id", $join_type);
         $this->db->join($table_three, "$table_one.$foreign2 = $table_three.id", $join_type);
-        $this->db->where($condition, $id);
+        $this->db->where($table_one . "." . $condition, $id);
         return $this->db->get();
+    }
+
+    public function getWithJoin($group_id)
+    {
+        return $this->db->query("
+            SELECT 
+                `contact_group`.*, 
+                `contact`.name as name, 
+                `contact`.major as major,
+                `group`.group_name as group_name 
+            FROM `contact_group` 
+            JOIN `contact` ON `contact_group`.contact_id = `contact`.id
+            JOIN `group` ON `contact_group`.group_id = `group`.id 
+            WHERE `contact_group`.group_id = $group_id
+        ");
     }
 
     public function getByWhereWithJoin($id)

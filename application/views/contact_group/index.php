@@ -27,10 +27,12 @@
 					<div class="alert alert-success alert-dismissible" role="alert">
 						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 						<?php echo $this->session->flashdata('success'); ?>
+						<?php $this->session->unset_userdata('success'); ?>
 					</div>
 				<?php } elseif ($this->session->flashdata('warning')) { ?>
 					<div class="alert alert-warning" role="alert">
 						<?php echo $this->session->flashdata('warning'); ?>
+						<?php $this->session->unset_userdata('warning'); ?>
 					</div>
 				<?php } ?>
 				<a href="<?php echo base_url('contact_group/create') ?>"><button type="button" class="btn btn-block btn-primary" style="width: 13%; display: inline-block"><i class="fas fa-plus"></i> Create New</button></a>
@@ -64,6 +66,7 @@
 						<tr>
 							<th>No</th>
 							<th>Contact Name</th>
+							<th>Majors</th>
 							<th>Group Name</th>
 							<th>Status</th>
 							<th>Actions</th>
@@ -76,14 +79,11 @@
 							<tr>
 								<td><?php echo $no ?></td>
 								<td><?php echo $value->name ?></td>
+								<td><?php echo $value->major ?></td>
 								<td><?php echo $value->group_name ?></td>
 								<td><?php echo check_status($value->status) ?></td>
 								<td>
-									<a href="<?= base_url('contact_group/show/');
-												echo $value->id; ?>"><i class="fas fa-eye"></i></a> &nbsp;
-									<a href="<?= base_url('contact_group/edit/');
-												echo $value->id; ?>"><i class="fas fa-pen-square"></i></a> &nbsp;
-									<a href="#" data-toggle="modal" data-target="#modal-primary<?= $value->id; ?>"><i class="fas fa-trash"></i></a>
+									<a href="#" data-toggle="modal" data-target="#modal-primary<?= $value->id; ?>" style="margin-left: 15px;"><i class="fas fa-trash"></i></a>
 								</td>
 							</tr>
 							<div class="modal fade" id="modal-primary<?= $value->id; ?>">

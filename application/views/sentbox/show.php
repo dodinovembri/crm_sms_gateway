@@ -1,84 +1,77 @@
-<?php $this->load->view('components/topbar') ?>
-<div id="layoutSidenav">
-    <?php $this->load->view('components/sidebar') ?>
-    <div id="layoutSidenav_content">
-        <main>
-            <header class="page-header page-header-compact page-header-light border-bottom bg-white mb-4">
-                <div class="container-xl px-4">
-                    <div class="page-header-content">
-                        <div class="row align-items-center justify-content-between pt-3">
-                            <div class="col-auto mb-3">
-                                <h1 class="page-header-title">
-                                    <a href="<?php echo base_url('user') ?>">User List</a> &nbsp;- Detail
-                                </h1>
-                            </div>
-                        </div>
-                    </div>
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Sentbox Detail</h1>
                 </div>
-            </header>
-            <div class="container-xl px-4 mt-4">
-                <div class="row">
-                    <div class="col-xl-4">
-                        <div class="card mb-4 mb-xl-0">
-                            <div class="card-header">Profile Picture</div>
-                            <div class="card-body text-center">
-                                <img class="img-account-profile rounded-circle mb-2" src="<?php echo base_url('uploads/user/'); echo $user->image ?>" alt="" />
-                                <div class="small font-italic text-muted"><?php echo $user->name; ?></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-8">
-                        <div class="card mb-4">
-                            <div class="card-header">Account Details</div>
-                            <div class="card-body">
-                                <form>
-                                    <div class="mb-3">
-                                        <label class="small mb-1">NIP</label>
-                                        <input class="form-control" type="text" value="<?php echo $user->nip; ?>" />
-                                    </div>                                    
-                                    <div class="row gx-3 mb-3">
-                                        <div class="col-md-6">
-                                            <label class="small mb-1">Email</label>
-                                            <input class="form-control" type="text" value="<?php echo $user->email; ?>" />
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label class="small mb-1">Position</label>
-                                            <input class="form-control" type="text" value="<?php echo $user->position; ?>" />
-                                        </div>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label class="small mb-1">Sex</label>
-                                        <input class="form-control" type="text" value="<?php echo check_sex($user->sex) ?>" />
-                                    </div> 
-                                    <div class="mb-3">
-                                        <label class="small mb-1">Birth Place</label>
-                                        <textarea rows="3" class="form-control"><?php echo $user->birth_place; ?></textarea>
-                                    </div>
-                                    <div class="row gx-3 mb-3">
-                                        <div class="col-md-6">
-                                            <label class="small mb-1">Religion</label>
-                                            <input class="form-control" type="text" value="<?php echo $user->religion; ?>" />
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label class="small mb-1">Phone Number</label>
-                                            <input class="form-control" type="text" name="phone_number" value="<?php echo $user->phone_number; ?>" />
-                                        </div>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label class="small mb-1">Address</label>
-                                        <textarea rows="3" class="form-control"><?php echo $user->address; ?></textarea>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label class="small mb-1">Status</label>
-                                        <input class="form-control" type="text" value="<?php echo check_status($user->status) ?>" />
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="<?= base_url('home') ?>">Home</a></li>
+                        <li class="breadcrumb-item"><a href="<?= base_url('sentbox') ?>">Sentbox</a></li>
+                        <li class="breadcrumb-item active">Sentbox Detail</li>
+                    </ol>
                 </div>
             </div>
-        </main>
-        <?php $this->load->view('components/footer') ?>
-    </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="rights">
+            <div class="col-md-3">
+
+                <!-- /.card -->
+            </div>
+            <!-- /.col -->
+            <div class="col-md-12">
+                <div class="card card-primary card-outline">
+                    <!-- /.card-header -->
+                    <div class="card-body p-0">
+                        <div class="mailbox-read-info">
+                            <h6>To: <?= $sentbox->DestinationNumber ?>
+                                <span class="mailbox-read-time float-right"><?= $sentbox->InsertIntoDB ?></span>
+                            </h6>
+                        </div>
+                        <!-- /.mailbox-controls -->
+                        <div class="mailbox-read-message">
+                            <?= $sentbox->TextDecoded ?>
+                        </div>
+                        <!-- /.mailbox-read-message -->
+                    </div>
+                    <!-- /.card-footer -->
+                    <div class="card-footer">
+                        <a href="#" data-toggle="modal" data-target="#modal-primary"><button type="button" class="btn btn-default"><i class="far fa-trash-alt"></i> Delete</button></a>
+                    </div>
+                    <div class="modal fade" id="modal-primary">
+                        <div class="modal-dialog">
+                            <div class="modal-content bg-primary">
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Delete Confirm</h4>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Are you sure want to delete this data?</p>
+                                </div>
+                                <div class="modal-footer justify-content-between">
+                                    <button type="button" class="btn btn-outline-light" data-dismiss="modal">Cancel</button>
+                                    <a href="<?= base_url('sentbox/destroy/');
+                                    echo $sentbox->ID ?>"><button type="button" class="btn btn-outline-light">Delete Data</button></a>
+                                </div>
+                            </div>
+                            <!-- /.modal-content -->
+                        </div>
+                        <!-- /.modal-dialog -->
+                    </div>
+                    <!-- /.card-footer -->
+                </div>
+                <!-- /.card -->
+            </div>
+            <!-- /.col -->
+        </div>
+    </section>
+    <!-- /.content -->
 </div>

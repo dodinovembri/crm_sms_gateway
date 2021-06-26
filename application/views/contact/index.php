@@ -26,10 +26,12 @@
 					<div class="alert alert-success alert-dismissible" role="alert">
 						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 						<?php echo $this->session->flashdata('success'); ?>
+						<?php $this->session->unset_userdata('success'); ?>
 					</div>
 				<?php } elseif ($this->session->flashdata('warning')) { ?>
 					<div class="alert alert-warning" role="alert">
 						<?php echo $this->session->flashdata('warning'); ?>
+						<?php $this->session->unset_userdata('warning'); ?>
 					</div>
 				<?php } ?>
 				<a href="<?php echo base_url('contact/create') ?>"><button type="button" class="btn btn-block btn-primary" style="width: 13%;">Create New</button></a>
@@ -39,6 +41,7 @@
 							<th>No</th>
 							<th>Participants Number</th>
 							<th>Name</th>
+							<th>Majors</th>
 							<th>Phone Number</th>
 							<th>Status</th>
 							<th>Actions</th>
@@ -50,6 +53,7 @@
 								<td><?php echo $no ?></td>
 								<td><?php echo $value->participants_number ?></td>
 								<td><?php echo $value->name ?></td>
+								<td><?php echo $value->major ?></td>
 								<td><?php echo $value->phone_number ?></td>
 								<td><?php echo check_status($value->status) ?></td>
 								<td>

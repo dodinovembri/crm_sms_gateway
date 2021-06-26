@@ -27,10 +27,12 @@
 					<div class="alert alert-success alert-dismissible" role="alert">
 						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 						<?php echo $this->session->flashdata('success'); ?>
+                        <?php $this->session->unset_userdata('success'); ?>
 					</div>
 				<?php } elseif ($this->session->flashdata('warning')) { ?>
 					<div class="alert alert-warning" role="alert">
 						<?php echo $this->session->flashdata('warning'); ?>
+                        <?php $this->session->unset_userdata('warning'); ?>
 					</div>
 				<?php } ?>
                     <!-- general form elements -->
@@ -51,7 +53,7 @@
 
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-primary">Add Contact</button>
-                                <a href="<?php echo base_url('home') ?>"><button type="button" class="btn btn-secondary">Cancel</button></a>
+                                <a href="<?php echo base_url('contact_groups') ?>"><button type="button" class="btn btn-secondary">Cancel</button></a>
                             </div>
                         </form>
                     </div>

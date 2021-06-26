@@ -57,6 +57,6 @@ class InboxController extends CI_Controller {
     {
         $this->InboxModel->destroy($id);        
         $this->session->set_flashdata('success', "Success deleted data!");
-        return redirect(base_url('user'));
+        return redirect(base_url('inbox'));
     }
 }

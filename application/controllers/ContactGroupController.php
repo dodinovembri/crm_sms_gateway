@@ -22,7 +22,7 @@ class ContactGroupController extends CI_Controller {
 
         $this->session->set_userdata($alternative);
 
-        $data['contact_groups'] = $this->ContactGroupModel->getCustomizeJoin("contact_group", "contact", "group", "contact_id", "group_id", "group_id", $id, "left")->result();
+        $data['contact_groups'] = $this->ContactGroupModel->getWithJoin($id)->result();
 
         $this->load->view('templates/header');
         $this->load->view('templates/sidebar');
@@ -93,9 +93,10 @@ class ContactGroupController extends CI_Controller {
 
     public function destroy($id)
     {
+        $group_id = $this->session->userdata('group_id');
         $this->ContactGroupModel->destroy($id);        
         $this->session->set_flashdata('success', "Success deleted data!");
-        return redirect(base_url('contact_group'));
+        return redirect(base_url("contact_groups/$group_id"));
     }
 
     public function upload()

@@ -72,6 +72,6 @@ class SentboxController extends CI_Controller {
     {
         $delete = $this->SentItemModel->destroy($id);        
         $this->session->set_flashdata('success', "Success deleted data!");
-        return redirect(base_url('user'));
+        return redirect(base_url('sentbox'));
     }
 }
