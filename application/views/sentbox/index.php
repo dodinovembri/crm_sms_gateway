@@ -35,48 +35,42 @@
 					</div>
 				<?php } ?>
 				<div class="mailbox-controls">
-						<!-- Check all button -->
-						<button type="button" id="checked_all" name="checked_all" class="btn btn-default btn-sm checkbox-toggle"><i class="far fa-square"></i>
-						</button>
-						<script>
-							$(document).ready(function() {
-								$("#checked_all").click(function() {
-									$('$checked_row').attr('checked', true);
-								});
-							});
-						</script>
-						<div class="btn-group">
-							<a href="#" data-toggle="modal" data-target="#modal-destroy-all"><button type="button" class="btn btn-default btn-sm">
-									<i class="far fa-trash-alt"></i>
-								</button></a>
-						</div>
-						<!-- /.btn-group -->
-						<a href="<?= base_url('outbox') ?>"><button type="button" class="btn btn-default btn-sm">
-								<i class="fas fa-sync-alt"></i>
+					<!-- Check all button -->
+					<button type="button" class="btn btn-default btn-sm">
+						<input type="checkbox" name="checkedAll" id="checkedAll" class="btn btn-default btn-sm" />
+					</button>
+					<div class="btn-group">
+						<a href="#" data-toggle="modal" data-target="#modal-destroy-all"><button type="button" class="btn btn-default btn-sm">
+								<i class="far fa-trash-alt"></i>
 							</button></a>
-						<!-- /.float-right -->
 					</div>
-					<div class="modal fade" id="modal-destroy-all">
-						<div class="modal-dialog">
-							<div class="modal-content bg-primary">
-								<div class="modal-header">
-									<h4 class="modal-title">Delete Confirm</h4>
-									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-										<span aria-hidden="true">&times;</span>
-									</button>
-								</div>
-								<div class="modal-body">
-									<p>Are you sure want to delete selected data?</p>
-								</div>
-								<div class="modal-footer justify-content-between">
-									<button type="button" class="btn btn-outline-light" data-dismiss="modal">Cancel</button>
-									<a href="<?= base_url('sentbox/destroy_all/')?>"><button type="button" class="btn btn-outline-light">Delete Data</button></a>
-								</div>
+					<!-- /.btn-group -->
+					<a href="<?= base_url('outbox') ?>"><button type="button" class="btn btn-default btn-sm">
+							<i class="fas fa-sync-alt"></i>
+						</button></a>
+					<!-- /.float-right -->
+				</div>
+				<div class="modal fade" id="modal-destroy-all">
+					<div class="modal-dialog">
+						<div class="modal-content bg-primary">
+							<div class="modal-header">
+								<h4 class="modal-title">Delete Confirm</h4>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
 							</div>
-							<!-- /.modal-content -->
+							<div class="modal-body">
+								<p>Are you sure want to delete selected data?</p>
+							</div>
+							<div class="modal-footer justify-content-between">
+								<button type="button" class="btn btn-outline-light" data-dismiss="modal">Cancel</button>
+								<a href="<?= base_url('sentbox/destroy_all/') ?>"><button type="button" class="btn btn-outline-light">Delete Data</button></a>
+							</div>
 						</div>
-						<!-- /.modal-dialog -->
+						<!-- /.modal-content -->
 					</div>
+					<!-- /.modal-dialog -->
+				</div>
 				<table id="example1" class="table table-bordered table-striped">
 					<thead>
 						<tr>
@@ -93,9 +87,9 @@
 						foreach ($sentbox as $key => $value) {
 							$no++; ?>
 							<tr>
+								<input type="hidden" name="ID[]" id="" value="<?php echo $value->ID; ?>">
 								<td>
-									<button type="button" id="checked_row" name="checked_row" class="btn btn-default btn-sm checkbox-toggle"><i class="far fa-square"></i>
-									</button>
+									<input type="checkbox" name="checkAll" class="checkSingle" style="margin-left: 20px;">
 								</td>
 								<td><?= $no ?></td>
 								<td><?= $value->DestinationNumber ?></td>
@@ -108,27 +102,27 @@
 								</td>
 							</tr>
 							<div class="modal fade" id="modal-primary<?= $value->ID; ?>">
-									<div class="modal-dialog">
-										<div class="modal-content bg-primary">
-											<div class="modal-header">
-												<h4 class="modal-title">Delete Confirm</h4>
-												<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-													<span aria-hidden="true">&times;</span>
-												</button>
-											</div>
-											<div class="modal-body">
-												<p>Are you sure want to delete this data?</p>
-											</div>
-											<div class="modal-footer justify-content-between">
-												<button type="button" class="btn btn-outline-light" data-dismiss="modal">Cancel</button>
-												<a href="<?= base_url('sentbox/destroy/');
-															echo $value->ID; ?>"><button type="button" class="btn btn-outline-light">Delete Data</button></a>
-											</div>
+								<div class="modal-dialog">
+									<div class="modal-content bg-primary">
+										<div class="modal-header">
+											<h4 class="modal-title">Delete Confirm</h4>
+											<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+												<span aria-hidden="true">&times;</span>
+											</button>
 										</div>
-										<!-- /.modal-content -->
+										<div class="modal-body">
+											<p>Are you sure want to delete this data?</p>
+										</div>
+										<div class="modal-footer justify-content-between">
+											<button type="button" class="btn btn-outline-light" data-dismiss="modal">Cancel</button>
+											<a href="<?= base_url('sentbox/destroy/');
+														echo $value->ID; ?>"><button type="button" class="btn btn-outline-light">Delete Data</button></a>
+										</div>
 									</div>
-									<!-- /.modal-dialog -->
-								</div>							
+									<!-- /.modal-content -->
+								</div>
+								<!-- /.modal-dialog -->
+							</div>
 						<?php } ?>
 				</table>
 			</div>
