@@ -76,6 +76,7 @@ $route['profile/store'] = 'ProfileController/store';
 $route['profile/edit/(:any)'] = 'ProfileController/edit/$1';
 $route['profile/show/(:any)'] = 'ProfileController/show/$1';
 $route['profile/update/(:any)'] = 'ProfileController/update/$1';
+$route['profile/update_password'] = 'ProfileController/update_password';
 $route['profile/destroy/(:any)'] = 'ProfileController/destroy/$1';
 
 // routes for phone

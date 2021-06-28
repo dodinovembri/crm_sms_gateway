@@ -19,6 +19,18 @@
     <!-- Main content -->
     <section class="content">
         <div class="container-fluid">
+            <?php if ($this->session->flashdata('success')) { ?>
+                <div class="alert alert-success alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    <?php echo $this->session->flashdata('success'); ?>
+                    <?php $this->session->unset_userdata('success'); ?>
+                </div>
+            <?php } elseif ($this->session->flashdata('warning')) { ?>
+                <div class="alert alert-warning" role="alert">
+                    <?php echo $this->session->flashdata('warning'); ?>
+                    <?php $this->session->unset_userdata('warning'); ?>
+                </div>
+            <?php } ?>
             <div class="row">
                 <!-- left column -->
                 <div class="col-md-3">
@@ -52,81 +64,90 @@
                         <div class="card-body">
                             <div class="tab-content">
                                 <div class="active tab-pane" id="account">
-                                    <form class="form-horizontal" method="POST" action="<?php echo base_url('profile/update'); ?>" enctype="multipart/form-data">
-                                        <div class="form-group row">
-                                            <label for="inputName" class="col-sm-2 col-form-label">Name</label>
-                                            <div class="col-sm-10">
-                                                <input type="text" class="form-control" id="inputName" placeholder="Name">
-                                            </div>
+                                    <form method="POST" action="<?= base_url('profile/update/');
+                                                                echo $profile->id; ?>" enctype="multipart/form-data">
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Name</label>
+                                            <input type="text" name="name" value="<?= $profile->name ?>" class="form-control" placeholder="Enter name" id="exampleInputEmail1">
                                         </div>
-                                        <div class="form-group row">
-                                            <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
-                                            <div class="col-sm-10">
-                                                <input type="email" class="form-control" id="inputEmail" placeholder="Email">
-                                            </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Email</label>
+                                            <input type="email" name="email" value="<?= $profile->email ?>" placeholder="Enter email" class="form-control" id="exampleInputEmail1">
                                         </div>
-                                        <div class="form-group row">
-                                            <label for="inputName2" class="col-sm-2 col-form-label">Image</label>
-                                            <div class="col-sm-10">
-                                                <input type="text" class="form-control" id="inputName2" placeholder="Name">
-                                            </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Image</label>
+                                            <input type="file" name="image" class="form-control" id="exampleInputEmail1">
+                                            <img src="<?= base_url('uploads/user/');
+                                                        echo $profile->image; ?>" alt="" width="20%">
                                         </div>
-                                        <div class="form-group row">
-                                            <label for="inputExperience" class="col-sm-2 col-form-label">Birth Place</label>
-                                            <div class="col-sm-10">
-                                                <textarea class="form-control" id="inputExperience" placeholder="Experience"></textarea>
-                                            </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Birth Place</label>
+                                            <textarea rows="3" name="birth_place" placeholder="Enter birth place" class="form-control" id="exampleInputEmail1"><?= $profile->birth_place ?></textarea>
                                         </div>
-                                        <div class="form-group row">
-                                            <label for="inputSkills" class="col-sm-2 col-form-label">Religion</label>
-                                            <div class="col-sm-10">
-                                                <input type="text" class="form-control" id="inputSkills" placeholder="Skills">
-                                            </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Religion</label>
+                                            <input type="text" name="religion" value="<?= $profile->religion ?>" placeholder="Enter religion" class="form-control" id="exampleInputEmail1">
                                         </div>
-                                        <div class="form-group row">
-                                            <label for="inputSkills" class="col-sm-2 col-form-label">Sex</label>
-                                            <div class="col-sm-10">
-                                                <input type="text" class="form-control" id="inputSkills" placeholder="Skills">
-                                            </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Sex</label>
+                                            <select name="sex" id="" class="form-control">
+                                                <?php if ($profile->sex == 0) { ?>
+                                                    <option value="0">Femail</option>
+                                                    <option value="1">Male</option>
+                                                <?php } elseif ($profile->sex == 1) { ?>
+                                                    <option value="1">Male</option>
+                                                    <option value="0">Femail</option>
+                                                <?php } ?>
+                                            </select>
                                         </div>
-                                        <div class="form-group row">
-                                            <label for="inputSkills" class="col-sm-2 col-form-label">Address</label>
-                                            <div class="col-sm-10">
-                                                <input type="text" class="form-control" id="inputSkills" placeholder="Skills">
-                                            </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Address</label>
+                                            <textarea name="address" rows="3" placeholder="Enter address" class="form-control" id="exampleInputEmail1"><?= $profile->address ?></textarea>
                                         </div>
-                                        <div class="form-group row">
-                                            <label for="inputSkills" class="col-sm-2 col-form-label">Phone Number</label>
-                                            <div class="col-sm-10">
-                                                <input type="text" class="form-control" id="inputSkills" placeholder="Skills">
-                                            </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Phone Number</label>
+                                            <input type="text" name="phone_number" value="<?= $profile->phone_number ?>" placeholder="Enter phone number" class="form-control" id="exampleInputEmail1">
                                         </div>
-                                        <div class="form-group row">
-                                            <div class="offset-sm-2 col-sm-10">
-                                                <button type="submit" class="btn btn-danger">Submit</button>
-                                            </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Role</label>
+                                            <select name="role_id" id="" class="form-control">
+                                                <option value="<?= $profile->role_id; ?>"><?= check_role($profile->role_id) ?></option>
+                                                <option value="1">User</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Status</label>
+                                            <select name="status" id="" class="form-control" required>
+                                                <?php if ($profile->status == 0) { ?>
+                                                    <option value="0">Inactive</option>
+                                                    <option value="1">Active</option>
+                                                <?php } elseif ($profile->status == 1) { ?>
+                                                    <option value="1">Active</option>
+                                                    <option value="0">Inactive</option>
+                                                <?php } ?>
+                                            </select>
+                                        </div>
+                                        <!-- /.card-body -->
+
+                                        <div class="form-group">
+                                            <button type="submit" class="btn btn-primary">Submit</button>
                                         </div>
                                     </form>
                                 </div>
                                 <!-- /.tab-pane -->
                                 <div class="tab-pane" id="password">
-                                    <form class="form-horizontal">
-                                        <div class="form-group row">
-                                            <label for="inputName" class="col-sm-2 col-form-label">Password</label>
-                                            <div class="col-sm-10">
-                                                <input type="email" class="form-control" id="inputName" placeholder="Name">
-                                            </div>
+                                    <form method="POST" action="<?= base_url('profile/update_password/'); ?>" enctype="multipart/form-data">
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Password</label>
+                                            <input type="password" name="password" class="form-control" placeholder="Enter Password">
                                         </div>
-                                        <div class="form-group row">
-                                            <label for="inputEmail" class="col-sm-2 col-form-label">Password Confirm</label>
-                                            <div class="col-sm-10">
-                                                <input type="email" class="form-control" id="inputEmail" placeholder="Email">
-                                            </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Confirm Password</label>
+                                            <input type="password" name="password_confirm" placeholder="Enter Password Confirm" class="form-control">
                                         </div>
-                                        <div class="form-group row">
-                                            <div class="offset-sm-2 col-sm-10">
-                                                <button type="submit" class="btn btn-danger">Submit</button>
-                                            </div>
+                                        <!-- /.card-body -->
+                                        <div class="form-group">
+                                            <button type="submit" class="btn btn-primary">Submit</button>
                                         </div>
                                     </form>
                                 </div>
