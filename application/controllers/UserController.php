@@ -111,7 +111,7 @@ class UserController extends CI_Controller {
     public function edit($id)
     {
         $data['user'] = $this->UserModel->getById($id)->row();
-
+    
         $this->load->view('templates/header');
         $this->load->view('templates/sidebar');
         $this->load->view('user/edit', $data);
@@ -182,6 +182,27 @@ class UserController extends CI_Controller {
             $this->UserModel->update($data, $id);
             $this->session->set_flashdata('success', "Success update user!");
             return redirect(base_url('user'));
+        }
+    }
+
+    public function update_password()
+    {
+        $id = $this->input->post('user_id');
+        $password = $this->input->post('password');
+        $password_confirm = $this->input->post('password_confirm');
+        
+        if ($password != $password_confirm) {
+            $this->session->set_flashdata('warning', "Password entered is doesn't match");
+            return redirect(base_url('user'));
+        }else{
+            $password = md5($password);    
+            $data = array(
+                'password' => $password
+            );
+
+        $this->UserModel->update($data, $id);
+        $this->session->set_flashdata('success', "Success update password!");
+        return redirect(base_url('user'));
         }
     }
 

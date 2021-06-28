@@ -66,6 +66,7 @@ $route['user/store'] = 'UserController/store';
 $route['user/edit/(:any)'] = 'UserController/edit/$1';
 $route['user/show/(:any)'] = 'UserController/show/$1';
 $route['user/update/(:any)'] = 'UserController/update/$1';
+$route['user/update_password'] = 'UserController/update_password';
 $route['user/destroy/(:any)'] = 'UserController/destroy/$1';
 
 // routes for profile
