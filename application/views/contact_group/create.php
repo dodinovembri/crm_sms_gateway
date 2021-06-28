@@ -10,7 +10,7 @@
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="<?= base_url('home') ?>">Home</a></li>
                         <li class="breadcrumb-item"><a href="<?= base_url('contact_group') ?>">Contact Groups</a></li>
-                        <li class="breadcrumb-item active">Create Single Message</li>
+                        <li class="breadcrumb-item active">Create Contact Group</li>
                     </ol>
                 </div>
             </div>

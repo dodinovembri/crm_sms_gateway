@@ -96,7 +96,7 @@ $route['single_message/show/(:any)'] = 'SingleMessageController/show/$1';
 $route['single_message/update/(:any)'] = 'SingleMessageController/update/$1';
 $route['single_message/destroy/(:any)'] = 'SingleMessageController/destroy/$1';
 
-// routes for single message
+// routes for broadcast message
 $route['broadcast_message'] = 'BroadcastMessageController';
 $route['broadcast_message/create'] = 'BroadcastMessageController/create';
 $route['broadcast_message/store'] = 'BroadcastMessageController/store';
@@ -114,7 +114,7 @@ $route['inbox/show/(:any)'] = 'InboxController/show/$1';
 $route['inbox/update/(:any)'] = 'InboxController/update/$1';
 $route['inbox/destroy/(:any)'] = 'InboxController/destroy/$1';
 
-// routes for single sentbox
+// routes for sentbox
 $route['sentbox'] = 'SentboxController';
 $route['sentbox/create'] = 'SentboxController/create';
 $route['sentbox/store'] = 'SentboxController/store';
@@ -131,6 +131,7 @@ $route['outbox/edit/(:any)'] = 'OutboxController/edit/$1';
 $route['outbox/show/(:any)'] = 'OutboxController/show/$1';
 $route['outbox/update/(:any)'] = 'OutboxController/update/$1';
 $route['outbox/destroy/(:any)'] = 'OutboxController/destroy/$1';
+$route['outbox/destroy_all'] = 'OutboxController/destroy_all';
 
 // routes for contact
 $route['contact'] = 'ContactController';

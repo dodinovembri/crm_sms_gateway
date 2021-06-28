@@ -18,10 +18,9 @@ class ProfileController extends CI_Controller {
         $user_id = $this->session->userdata('id');
         $data['profile'] = $this->UserModel->getById($user_id)->row();
 
-
         $this->load->view('templates/header');
         $this->load->view('templates/sidebar');
-        $this->load->view('profile/edit', $data);
+        $this->load->view('profile/index', $data);
         $this->load->view('templates/footer');
 	}
 
