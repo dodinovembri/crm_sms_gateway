@@ -95,4 +95,16 @@ class ContactController extends CI_Controller {
         $this->session->set_flashdata('success', "Success deleted data!");
         return redirect(base_url('contact'));
     }
+
+    public function destroy_all()
+    {
+        $id = $this->input->post('ID');
+
+        foreach ($id as $key => $value) {
+            $this->ContactModel->destroy($value); 
+        }
+
+        $this->session->set_flashdata('success', "Success deleted data!");
+        return redirect(base_url('contact'));
+    }        
 }

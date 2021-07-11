@@ -34,22 +34,22 @@
 						<?php $this->session->unset_userdata('warning'); ?>
 					</div>
 				<?php } ?>
-				<div class="mailbox-controls">
-					<!-- Check all button -->
-					<button type="button" class="btn btn-default btn-sm">
-						<input type="checkbox" name="checkedAll" id="checkedAll" class="btn btn-default btn-sm" />
-					</button>
-					<div class="btn-group">
-						<a href="#" data-toggle="modal" data-target="#modal-destroy-all"><button type="button" class="btn btn-default btn-sm">
-								<i class="far fa-trash-alt"></i>
-							</button></a>
-					</div>
-					<!-- /.btn-group -->
-					<a href="<?= base_url('outbox') ?>"><button type="button" class="btn btn-default btn-sm">
-							<i class="fas fa-sync-alt"></i>
+
+				<!-- Check all button -->
+				<button type="button" class="btn btn-default btn-sm">
+					<input type="checkbox" name="checkedAll" id="checkedAll" class="btn btn-default btn-sm" />
+				</button>
+				<div class="btn-group">
+					<a href="#" data-toggle="modal" data-target="#modal-destroy-all"><button type="button" class="btn btn-default btn-sm">
+							<i class="far fa-trash-alt"></i>
 						</button></a>
-					<!-- /.float-right -->
 				</div>
+				<!-- /.btn-group -->
+				<a href="<?= base_url('outbox') ?>"><button type="button" class="btn btn-default btn-sm">
+						<i class="fas fa-sync-alt"></i>
+					</button></a>
+				<!-- /.float-right -->
+				<br><br>
 				<div class="modal fade" id="modal-destroy-all">
 					<div class="modal-dialog">
 						<div class="modal-content bg-primary">
@@ -64,65 +64,70 @@
 							</div>
 							<div class="modal-footer justify-content-between">
 								<button type="button" class="btn btn-outline-light" data-dismiss="modal">Cancel</button>
-								<a href="<?= base_url('inbox/destroy_all/') ?>"><button type="button" class="btn btn-outline-light">Delete Data</button></a>
+								<button type="button" class="btn btn-outline-light" onclick="call()">Delete Data</button>
+								<script>
+									function call() {
+										$("#form-delete").submit();
+									}
+								</script>
 							</div>
 						</div>
-						<!-- /.modal-content -->
 					</div>
-					<!-- /.modal-dialog -->
 				</div>
-				<table id="example1" class="table table-bordered table-striped">
-					<thead>
-						<tr>
-							<th>Check</th>
-							<th>No</th>
-							<th>Sender Number</th>
-							<th>Text</th>
-							<th>Actions</th>
-						</tr>
-					</thead>
-					<tbody>
-						<?php $no = 0;
-						foreach ($inbox as $key => $value) {
-							$no++; ?>
+				<form action="<?php echo base_url('inbox/destroy_all') ?>" id="form-delete" method="POST">
+					<table id="example1" class="table table-bordered table-striped">
+						<thead>
 							<tr>
-								<input type="hidden" name="ID[]" id="" value="<?php echo $value->ID; ?>">
-								<td>
-									<input type="checkbox" name="checkAll" class="checkSingle" style="margin-left: 20px;">
-								</td>
-								<td><?= $no ?></td>
-								<td><?= $value->SenderNumber ?></td>
-								<td><?= substr($value->TextDecoded, 0, 60) ?> ...</td>
-								<td>
-									<a href="<?= base_url('inbox/show/');
-												echo $value->ID; ?>"><i class="fas fa-eye"></i></a> &nbsp;
-									<a href="#" data-toggle="modal" data-target="#modal-primary<?= $value->ID; ?>"><i class="fas fa-trash"></i></a>
-								</td>
+								<th>Check</th>
+								<th>No</th>
+								<th>Sender Number</th>
+								<th>Text</th>
+								<th>Actions</th>
 							</tr>
-							<div class="modal fade" id="modal-primary<?= $value->ID; ?>">
-								<div class="modal-dialog">
-									<div class="modal-content bg-primary">
-										<div class="modal-header">
-											<h4 class="modal-title">Delete Confirm</h4>
-											<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-												<span aria-hidden="true">&times;</span>
-											</button>
+						</thead>
+						<tbody>
+							<?php $no = 0;
+							foreach ($inbox as $key => $value) {
+								$no++; ?>
+								<tr>
+									<input type="hidden" name="ID[]" id="" value="<?php echo $value->ID; ?>">
+									<td>
+										<input type="checkbox" name="checkAll" class="checkSingle" style="margin-left: 20px;">
+									</td>
+									<td><?= $no ?></td>
+									<td><?= $value->SenderNumber ?></td>
+									<td><?= substr($value->TextDecoded, 0, 60) ?> ...</td>
+									<td>
+										<a href="<?= base_url('inbox/show/');
+													echo $value->ID; ?>"><i class="fas fa-eye"></i></a> &nbsp;
+										<a href="#" data-toggle="modal" data-target="#modal-primary<?= $value->ID; ?>"><i class="fas fa-trash"></i></a>
+									</td>
+								</tr>
+								<div class="modal fade" id="modal-primary<?= $value->ID; ?>">
+									<div class="modal-dialog">
+										<div class="modal-content bg-primary">
+											<div class="modal-header">
+												<h4 class="modal-title">Delete Confirm</h4>
+												<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+													<span aria-hidden="true">&times;</span>
+												</button>
+											</div>
+											<div class="modal-body">
+												<p>Are you sure want to delete this data?</p>
+											</div>
+											<div class="modal-footer justify-content-between">
+												<button type="button" class="btn btn-outline-light" data-dismiss="modal">Cancel</button>
+												<a href="<?= base_url('inbox/destroy/');
+															echo $value->ID; ?>"><button type="button" class="btn btn-outline-light">Delete Data</button></a>
+											</div>
 										</div>
-										<div class="modal-body">
-											<p>Are you sure want to delete this data?</p>
-										</div>
-										<div class="modal-footer justify-content-between">
-											<button type="button" class="btn btn-outline-light" data-dismiss="modal">Cancel</button>
-											<a href="<?= base_url('inbox/destroy/');
-														echo $value->ID; ?>"><button type="button" class="btn btn-outline-light">Delete Data</button></a>
-										</div>
+										<!-- /.modal-content -->
 									</div>
-									<!-- /.modal-content -->
+									<!-- /.modal-dialog -->
 								</div>
-								<!-- /.modal-dialog -->
-							</div>
-						<?php } ?>
-				</table>
+							<?php } ?>
+					</table>
+				</form>
 			</div>
 		</div>
 		<!-- /.card -->
@@ -130,3 +135,34 @@
 	</section>
 	<!-- /.content -->
 </div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+	$(document).ready(function() {
+		$("#checkedAll").change(function() {
+			if (this.checked) {
+				$(".checkSingle").each(function() {
+					this.checked = true;
+				})
+			} else {
+				$(".checkSingle").each(function() {
+					this.checked = false;
+				})
+			}
+		});
+
+		$(".checkSingle").click(function() {
+			if ($(this).is(":checked")) {
+				var isAllChecked = 0;
+				$(".checkSingle").each(function() {
+					if (!this.checked)
+						isAllChecked = 1;
+				})
+				if (isAllChecked == 0) {
+					$("#checkedAll").prop("checked", true);
+				}
+			} else {
+				$("#checkedAll").prop("checked", false);
+			}
+		});
+	});
+</script>

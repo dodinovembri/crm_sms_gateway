@@ -34,21 +34,21 @@
 							<?php $this->session->unset_userdata('warning'); ?>
 						</div>
 					<?php } ?>
-					<div class="mailbox-controls">
-						<!-- Check all button -->
-						<button type="button" class="btn btn-default btn-sm">
-							<input type="checkbox" name="checkedAll" id="checkedAll" class="btn btn-default btn-sm" />
-						</button>
-						<div class="btn-group">
-							<a href="#" data-toggle="modal" data-target="#modal-destroy-all"><button type="button" class="btn btn-default btn-sm">
-									<i class="far fa-trash-alt"></i>
-								</button>
-							</a>
-						</div>
-						<a href="<?= base_url('outbox') ?>"><button type="button" class="btn btn-default btn-sm">
-								<i class="fas fa-sync-alt"></i>
-							</button></a>
+
+					<!-- Check all button -->
+					<button type="button" class="btn btn-default btn-sm">
+						<input type="checkbox" name="checkedAll" id="checkedAll" class="btn btn-default btn-sm" />
+					</button>
+					<div class="btn-group">
+						<a href="#" data-toggle="modal" data-target="#modal-destroy-all"><button type="button" class="btn btn-default btn-sm">
+								<i class="far fa-trash-alt"></i>
+							</button>
+						</a>
 					</div>
+					<a href="<?= base_url('outbox') ?>"><button type="button" class="btn btn-default btn-sm">
+							<i class="fas fa-sync-alt"></i>
+						</button></a>
+					<br><br>
 					<div class="modal fade" id="modal-destroy-all">
 						<div class="modal-dialog">
 							<div class="modal-content bg-primary">
@@ -73,21 +73,21 @@
 							</div>
 						</div>
 					</div>
-
-					<table id="example1" class="table table-bordered table-striped">
-						<thead>
-							<tr>
-								<th>Check</th>
-								<th>No</th>
-								<th>Receiver Name</th>
-								<th>Destination Number</th>
-								<th>Text</th>
-								<th>Status</th>
-								<th>Actions</th>
-							</tr>
-						</thead>
-						<tbody>
-							<form action="<?php echo base_url('outbox/destroy_all') ?>" id="form-delete" method="POST">
+					</script>
+					<form action="<?php echo base_url('outbox/destroy_all') ?>" id="form-delete" method="POST">
+						<table id="example1" class="table table-bordered table-striped">
+							<thead>
+								<tr>
+									<th>Check</th>
+									<th>No</th>
+									<th>Receiver Name</th>
+									<th>Destination Number</th>
+									<th>Text</th>
+									<th>Status</th>
+									<th>Actions</th>
+								</tr>
+							</thead>
+							<tbody>
 								<?php $no = 0;
 								foreach ($outbox as $key => $value) {
 									$no++; ?>
@@ -130,8 +130,8 @@
 										<!-- /.modal-dialog -->
 									</div>
 								<?php } ?>
-							</form>
-					</table>
+						</table>
+					</form>
 				</div>
 			</div>
 			<!-- /.card -->

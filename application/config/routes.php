@@ -114,6 +114,7 @@ $route['inbox/edit/(:any)'] = 'InboxController/edit/$1';
 $route['inbox/show/(:any)'] = 'InboxController/show/$1';
 $route['inbox/update/(:any)'] = 'InboxController/update/$1';
 $route['inbox/destroy/(:any)'] = 'InboxController/destroy/$1';
+$route['inbox/destroy_all'] = 'InboxController/destroy_all';
 
 // routes for sentbox
 $route['sentbox'] = 'SentboxController';
@@ -123,6 +124,7 @@ $route['sentbox/edit/(:any)'] = 'SentboxController/edit/$1';
 $route['sentbox/show/(:any)'] = 'SentboxController/show/$1';
 $route['sentbox/update/(:any)'] = 'SentboxController/update/$1';
 $route['sentbox/destroy/(:any)'] = 'SentboxController/destroy/$1';
+$route['sentbox/destroy_all'] = 'SentboxController/destroy_all';
 
 // routes for outbox
 $route['outbox'] = 'OutboxController';
@@ -142,6 +144,7 @@ $route['contact/edit/(:any)'] = 'ContactController/edit/$1';
 $route['contact/show/(:any)'] = 'ContactController/show/$1';
 $route['contact/update/(:any)'] = 'ContactController/update/$1';
 $route['contact/destroy/(:any)'] = 'ContactController/destroy/$1';
+$route['contact/destroy_all'] = 'ContactController/destroy_all';
 
 // routes for contact group
 $route['contact_groups/(:any)'] = 'ContactGroupController/index/$1';
@@ -152,6 +155,7 @@ $route['contact_group/edit/(:any)'] = 'ContactGroupController/edit/$1';
 $route['contact_group/show/(:any)'] = 'ContactGroupController/show/$1';
 $route['contact_group/update/(:any)'] = 'ContactGroupController/update/$1';
 $route['contact_group/destroy/(:any)'] = 'ContactGroupController/destroy/$1';
+$route['contact_group/destroy_all'] = 'ContactGroupController/destroy_all';
 
 // routes for autoreply
 $route['autoreply'] = 'AutoReplyController';
