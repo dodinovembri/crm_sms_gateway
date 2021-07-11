@@ -164,12 +164,13 @@ class ContactGroupController extends CI_Controller {
             return redirect(base_url("contact_groups/$group_id"));
     }
 
-    public function destroy_all()
+    public function destroy_all($id)
     {
-        $id = $this->input->post('ID');
-
-        foreach ($id as $key => $value) {
-            $this->ContactGroupModel->destroy($value); 
+        // $id = $this->input->post('ID');
+        $delete = $this->ContactGroupModel->getByWhere($id)->result();
+    
+        foreach ($delete as $key => $value) {
+            $this->ContactGroupModel->destroy($value->id); 
         }
 
         $this->session->set_flashdata('success', "Success deleted data!");
