@@ -100,7 +100,8 @@
 						</div>
 					</div>
 				</div>
-				<form action="<?php echo base_url('contact_group/destroy_all/'); echo $this->session->userdata('group_id'); ?>" id="form-delete" method="POST">
+				<br><br>
+				<form action="<?php echo base_url('contact_group/destroy_all') ?>" id="form-delete" method="POST">
 					<table id="example1" class="table table-bordered table-striped">
 						<thead>
 							<tr>

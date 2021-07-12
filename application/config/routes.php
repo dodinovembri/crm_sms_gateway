@@ -155,7 +155,7 @@ $route['contact_group/edit/(:any)'] = 'ContactGroupController/edit/$1';
 $route['contact_group/show/(:any)'] = 'ContactGroupController/show/$1';
 $route['contact_group/update/(:any)'] = 'ContactGroupController/update/$1';
 $route['contact_group/destroy/(:any)'] = 'ContactGroupController/destroy/$1';
-$route['contact_group/destroy_all/(:any)'] = 'ContactGroupController/destroy_all/$1';
+$route['contact_group/destroy_all'] = 'ContactGroupController/destroy_all';
 
 // routes for autoreply
 $route['autoreply'] = 'AutoReplyController';

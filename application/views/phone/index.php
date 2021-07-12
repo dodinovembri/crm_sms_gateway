@@ -35,7 +35,7 @@
 					</div>
 				<?php } ?>
 				<?php if (count($phones) == 0) { ?>
-					<a href="<?php echo base_url('phone/create') ?>"><button type="button" class="btn btn-block btn-primary" style="width: 13%;">Create New</button></a>
+					<a href="<?php echo base_url('phone/create') ?>"><button type="button" class="btn btn-block btn-primary" style="width: 13%;">Create New</button></a> <br>
 				<?php } ?>
 				<table id="example1" class="table table-bordered table-striped">
 					<thead>

@@ -35,6 +35,7 @@
 					</div>
 				<?php } ?>
 				<a href="<?php echo base_url('user/create') ?>"><button type="button" class="btn btn-block btn-primary" style="width: 13%;">Create New</button></a>
+				<br>
 				<table id="example1" class="table table-bordered table-striped">
 					<thead>
 						<tr>

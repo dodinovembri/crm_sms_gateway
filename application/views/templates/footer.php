@@ -257,9 +257,9 @@
     $(function() {
       $("#example1").DataTable({
         "responsive": true,
-        "lengthChange": false,
+        // "lengthChange": false,
         "autoWidth": false,
-        "lengthMenu": [10, 25, 50, "All"],
+        "lengthMenu": [10, 25, 50, 1000],
         // "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
       }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
       $('#example2').DataTable({

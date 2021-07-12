@@ -75,6 +75,7 @@
 					</div>
 				</div>
 				<a href="<?php echo base_url('contact/create') ?>"><button type="button" class="btn btn-block btn-primary" style="width: 13%;">Create New</button></a>
+				<br>
 				<form action="<?php echo base_url('contact/destroy_all') ?>" id="form-delete" method="POST">
 					<table id="example1" class="table table-bordered table-striped">
 						<thead>
