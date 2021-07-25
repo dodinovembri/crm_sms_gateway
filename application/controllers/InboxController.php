@@ -6,7 +6,7 @@ class InboxController extends CI_Controller {
     function __construct()
     {
         parent::__construct();
-        $this->load->model('InboxModel');
+        $this->load->model(['InboxModel', 'NotificationModel']);
 
         if ($this->session->userdata('logged_in') != 1) {
             return redirect(base_url('login'));
@@ -35,6 +35,14 @@ class InboxController extends CI_Controller {
 
     public function show($id)
     {
+        $update = $this->InboxModel->getById($id)->row();
+        $data = array(
+            'is_read' => 1
+        );
+        $user_id = $this->session->userdata('id');
+        $inbox_id = $id;
+        $this->NotificationModel->update($data, $user_id, $inbox_id);
+
         $data['inbox'] = $this->InboxModel->getById($id)->row();
 
         $this->load->view('templates/header');

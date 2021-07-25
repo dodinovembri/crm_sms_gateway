@@ -18,7 +18,13 @@ class InboxModel extends CI_Model
     {
         $this->db->where('id', $id);
         return $this->db->get($this->_table);
-    }      
+    }  
+    
+    public function getByWhere()
+    {
+        $this->db->where('is_pushed_to_notification', 0);
+        return $this->db->get($this->_table);
+    }     
 
     public function update($data, $id)
     {
